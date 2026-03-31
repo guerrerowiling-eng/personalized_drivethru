@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive-Thru — Operador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1 class="logo">☕ Drive-Thru</h1>
+            <span class="status" id="status">En línea</span>
+        </header>
+
+        <main class="main">
+            <div class="display-card" id="displayCard">
+                <div class="greeting" id="greeting">Esperando cliente...</div>
+                <div class="customer-name" id="customerName"></div>
+                <div class="plate-badge" id="plateBadge"></div>
+                <div class="order-hint" id="orderHint"></div>
+                <div class="visits-badge" id="visitsBadge"></div>
+            </div>
+
+            <div class="controls">
+                <div class="input-group">
+                    <label for="plateInput">Probar placa manualmente</label>
+                    <div class="input-row">
+                        <input type="text" id="plateInput" placeholder="Ej: ABC123" maxlength="10" autocomplete="off">
+                        <button type="button" id="btnLookup" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+                <button type="button" id="btnSimulate" class="btn btn-secondary">Simular llegada</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <span id="lastPlate"></span>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

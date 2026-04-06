@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drive-Thru — Operador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Café Barista — Drive-Thru</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,30 +12,66 @@
 <body>
     <div class="app">
         <header class="header">
-            <h1 class="logo">☕ Drive-Thru</h1>
+            <h1 class="logo">Café Barista · Drive-Thru</h1>
             <span class="status" id="status">En línea</span>
         </header>
 
         <main class="main">
             <div class="display-card" id="displayCard">
-                <div class="greeting" id="greeting">Esperando cliente...</div>
+                <div class="greeting" id="greeting">Esperando cliente…</div>
                 <div class="customer-name" id="customerName"></div>
                 <div class="plate-badge" id="plateBadge"></div>
                 <div class="order-hint" id="orderHint"></div>
                 <div class="visits-badge" id="visitsBadge"></div>
             </div>
 
+            <div class="action-panel" id="actionPanel" hidden>
+                <div class="suggestion-actions" id="suggestionActions" hidden>
+                    <button type="button" class="btn btn-same" id="btnSameOrder">Mismo pedido ✅</button>
+                    <button type="button" class="btn btn-different" id="btnDifferentOrder">Otro pedido 🔄</button>
+                </div>
+
+                <div class="name-row" id="nameRow" hidden>
+                    <label for="customerNameInput">Nombre del cliente</label>
+                    <input type="text" id="customerNameInput" class="input-large" placeholder="Nombre" autocomplete="name" enterkeyhint="done">
+                </div>
+
+                <div class="menu-actions">
+                    <button type="button" class="btn btn-menu" id="btnOpenMenu">Elegir del menú</button>
+                </div>
+
+                <div class="pending-bar" id="pendingBar" hidden>
+                    <p class="pending-label" id="pendingLabel"></p>
+                    <button type="button" class="btn btn-primary btn-block" id="btnConfirmVisit">Confirmar visita</button>
+                </div>
+            </div>
+
+            <p class="error-toast" id="errorToast" hidden></p>
+
             <div class="controls">
                 <div class="input-group">
-                    <label for="plateInput">Probar placa manualmente</label>
+                    <label for="plateInput">Placa manual</label>
                     <div class="input-row">
-                        <input type="text" id="plateInput" placeholder="Ej: ABC123" maxlength="10" autocomplete="off">
-                        <button type="button" id="btnLookup" class="btn btn-primary">Buscar</button>
+                        <input type="text" id="plateInput" placeholder="Ej: ABC123" maxlength="12" autocomplete="off" inputmode="text">
+                        <button type="button" id="btnLookup" class="btn btn-primary">Aplicar</button>
                     </div>
                 </div>
                 <button type="button" id="btnSimulate" class="btn btn-secondary">Simular llegada</button>
             </div>
         </main>
+
+        <div class="menu-backdrop" id="menuBackdrop" hidden aria-hidden="true"></div>
+        <aside class="menu-sheet" id="menuSheet" role="dialog" aria-modal="true" aria-label="Menú" hidden aria-hidden="true">
+            <div class="menu-sheet-head">
+                <h2 class="menu-sheet-title">Menú</h2>
+                <button type="button" class="btn-icon" id="btnCloseMenu" aria-label="Cerrar menú">✕</button>
+            </div>
+            <input type="search" id="menuFilter" class="menu-filter" placeholder="Buscar en el menú…" autocomplete="off">
+            <div class="menu-body" id="menuBody"></div>
+            <div class="menu-sheet-footer">
+                <button type="button" class="btn-close-menu-footer" id="btnCloseMenuFooter">Cerrar menú</button>
+            </div>
+        </aside>
 
         <footer class="footer">
             <span id="lastPlate"></span>

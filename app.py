@@ -6,12 +6,17 @@ información personalizada al operador.
 """
 import threading
 import time
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, Response
 
 import config
 from services.customer_db import get_customer_by_plate, normalize_plate, upsert_customer
 from services.menu_data import MENU_CATEGORIES, is_valid_order
-from services.plate_ocr import read_plate_from_camera
+from services.plate_ocr import (
+    get_cached_preview_jpeg,
+    read_plate_from_camera,
+    release_camera,
+    start_preview_capture_loop,
+)
 from services import visit_history
 
 app = Flask(__name__)
@@ -34,6 +39,7 @@ def _build_operator_state(plate: str | None) -> dict:
             "suggested_order": None,
             "show_suggestion_actions": False,
             "hint_nombre": None,
+            "camera_mode": config.get_effective_camera_mode(),
         }
 
     norm = normalize_plate(plate)
@@ -80,6 +86,7 @@ def _build_operator_state(plate: str | None) -> dict:
         "suggested_order": sug_order,
         "show_suggestion_actions": bool(sug_order),
         "hint_nombre": hint_nombre,
+        "camera_mode": config.get_effective_camera_mode(),
     }
 
 
@@ -88,10 +95,47 @@ def _camera_simulation_loop():
     global _current_plate
     while True:
         time.sleep(config.CAMERA_SIMULATION_INTERVAL)
-        if config.CAMERA_MODE == "simulated":
+        if config.get_effective_camera_mode() == "simulated":
             plate = read_plate_from_camera()
             with _plate_lock:
                 _current_plate = plate
+
+
+@app.route("/api/camera-mode", methods=["GET"])
+def api_camera_mode_get():
+    """Modo de cámara efectivo y valor por defecto del entorno."""
+    return jsonify({
+        "effective": config.get_effective_camera_mode(),
+        "env_default": config.CAMERA_MODE,
+    })
+
+
+@app.route("/api/camera-mode", methods=["POST"])
+def api_camera_mode_post():
+    """Cambia simulado / real en caliente (no modifica variables de entorno)."""
+    data = request.get_json() or {}
+    mode = (data.get("mode") or "").strip().lower()
+    try:
+        config.set_runtime_camera_mode(mode)
+    except ValueError as e:
+        return jsonify({"ok": False, "error": str(e)}), 400
+    if mode == "simulated":
+        release_camera()
+    elif mode == "real":
+        start_preview_capture_loop()
+    return jsonify({
+        "ok": True,
+        "effective": config.get_effective_camera_mode(),
+    })
+
+
+@app.route("/api/camera-preview")
+def api_camera_preview():
+    """Devuelve el último JPEG en caché para vista previa del operador."""
+    ok, data, err = get_cached_preview_jpeg()
+    if not ok:
+        return jsonify({"ok": False, "error": err or "Vista previa no disponible"}), 503
+    return Response(data, mimetype="image/jpeg")
 
 
 @app.route("/")
@@ -199,9 +243,11 @@ def api_record_visit():
 
 
 def main():
-    if config.CAMERA_MODE == "simulated" and config.AUTO_SIMULATE_ARRIVALS:
+    if config.get_effective_camera_mode() == "simulated" and config.AUTO_SIMULATE_ARRIVALS:
         t = threading.Thread(target=_camera_simulation_loop, daemon=True)
         t.start()
+    if config.get_effective_camera_mode() == "real":
+        start_preview_capture_loop()
 
     app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=False)
 

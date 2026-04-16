@@ -16,6 +16,19 @@
             <span class="status" id="status">En línea</span>
         </header>
 
+        <section class="camera-panel" aria-label="Cámara y modo de detección">
+            <div class="camera-panel-row">
+                <div class="camera-preview-box">
+                    <img id="cameraPreviewImg" class="camera-preview-img" alt="Vista previa de la cámara" width="320" height="240" hidden>
+                    <p class="camera-preview-placeholder" id="cameraPreviewPlaceholder">Vista previa solo en modo cámara real</p>
+                </div>
+                <div class="camera-panel-actions">
+                    <p class="camera-mode-label" id="cameraModeLabel">Modo: simulado</p>
+                    <button type="button" class="btn btn-secondary" id="btnCameraToggle">Usar cámara real</button>
+                </div>
+            </div>
+        </section>
+
         <main class="main">
             <div class="display-card" id="displayCard">
                 <div class="greeting" id="greeting">Esperando cliente…</div>

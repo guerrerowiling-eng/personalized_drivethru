@@ -3,14 +3,17 @@
  */
 
 const POLL_INTERVAL_MS = 2000;
+const PREVIEW_INTERVAL_MS = 180;
 
 let lastServerPlate = null;
+let cameraPreviewTimer = null;
 let differentOrderMode = false;
 let pendingOrder = null;
 let menuCategories = [];
 let filterText = "";
 /** @type {object | null} */
 let lastState = null;
+let appliedCameraMode = null;
 
 const elements = {
     displayCard: document.getElementById("displayCard"),
@@ -40,7 +43,54 @@ const elements = {
     menuFilter: document.getElementById("menuFilter"),
     btnCloseMenu: document.getElementById("btnCloseMenu"),
     btnCloseMenuFooter: document.getElementById("btnCloseMenuFooter"),
+    cameraPreviewImg: document.getElementById("cameraPreviewImg"),
+    cameraPreviewPlaceholder: document.getElementById("cameraPreviewPlaceholder"),
+    cameraModeLabel: document.getElementById("cameraModeLabel"),
+    btnCameraToggle: document.getElementById("btnCameraToggle"),
 };
+
+function stopCameraPreview() {
+    if (cameraPreviewTimer) {
+        clearInterval(cameraPreviewTimer);
+        cameraPreviewTimer = null;
+    }
+}
+
+function fetchOneCameraPreview() {
+    elements.cameraPreviewImg.src = `/api/camera-preview?t=${Date.now()}`;
+}
+
+function startCameraPreview() {
+    stopCameraPreview();
+    elements.cameraPreviewImg.hidden = false;
+    elements.cameraPreviewPlaceholder.hidden = false;
+    elements.cameraPreviewPlaceholder.textContent = "Cargando cámara…";
+    fetchOneCameraPreview();
+    cameraPreviewTimer = setInterval(fetchOneCameraPreview, PREVIEW_INTERVAL_MS);
+}
+
+function syncCameraUi(mode) {
+    const m = mode === "real" ? "real" : "simulated";
+    if (m === appliedCameraMode) return;
+    appliedCameraMode = m;
+
+    if (m === "real") {
+        elements.cameraModeLabel.textContent = "Modo: cámara real";
+        elements.btnCameraToggle.textContent = "Usar simulación";
+        elements.btnSimulate.textContent = "Detectar placa";
+        startCameraPreview();
+    } else {
+        stopCameraPreview();
+        elements.cameraModeLabel.textContent = "Modo: simulado";
+        elements.btnCameraToggle.textContent = "Usar cámara real";
+        elements.btnSimulate.textContent = "Simular llegada";
+        elements.cameraPreviewImg.hidden = true;
+        elements.cameraPreviewImg.removeAttribute("src");
+        elements.cameraPreviewPlaceholder.hidden = false;
+        elements.cameraPreviewPlaceholder.textContent =
+            "Vista previa solo en modo cámara real";
+    }
+}
 
 function showError(msg) {
     elements.errorToast.textContent = msg;
@@ -191,6 +241,10 @@ function updateDisplay(state) {
     }
 
     elements.lastPlate.textContent = state.plate ? `Placa: ${state.plate}` : "";
+
+    if (state.camera_mode !== undefined) {
+        syncCameraUi(state.camera_mode);
+    }
 }
 
 async function fetchMenuOnce() {
@@ -354,6 +408,41 @@ elements.plateInput.addEventListener("keydown", (e) => {
 });
 
 elements.btnSimulate.addEventListener("click", simulateArrival);
+
+elements.btnCameraToggle.addEventListener("click", async () => {
+    const cur =
+        lastState && lastState.camera_mode ? lastState.camera_mode : "simulated";
+    const next = cur === "real" ? "simulated" : "real";
+    try {
+        const res = await fetch("/api/camera-mode", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ mode: next }),
+        });
+        const data = await res.json();
+        if (!data.ok) {
+            showError(data.error || "No se pudo cambiar el modo de cámara");
+            return;
+        }
+        appliedCameraMode = null;
+        syncCameraUi(data.effective);
+        await fetchCurrentState();
+    } catch (e) {
+        console.error(e);
+        showError("Error de red al cambiar modo de cámara");
+    }
+});
+
+elements.cameraPreviewImg.addEventListener("load", () => {
+    elements.cameraPreviewImg.hidden = false;
+    elements.cameraPreviewPlaceholder.hidden = true;
+});
+
+elements.cameraPreviewImg.addEventListener("error", () => {
+    elements.cameraPreviewImg.hidden = true;
+    elements.cameraPreviewPlaceholder.hidden = false;
+    elements.cameraPreviewPlaceholder.textContent = "Vista previa no disponible";
+});
 
 fetchMenuOnce();
 fetchCurrentState();

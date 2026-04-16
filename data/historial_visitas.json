@@ -1349,5 +1349,47 @@
     "nombre": "wili",
     "orden": "Matcha Latte caliente (12oz)",
     "fecha_hora": "2026-04-13T15:24:45-06:00"
+  },
+  {
+    "placa_normalizada": "P294DPB",
+    "placa_original": "P294DPB",
+    "nombre": "Toyota Tundra Blanco",
+    "orden": "Cappuccino (16oz)",
+    "fecha_hora": "2026-04-15T19:22:08-06:00"
+  },
+  {
+    "placa_normalizada": "PO69FPK",
+    "placa_original": "PO69FPK",
+    "nombre": "Audi negro ken",
+    "orden": "Matcha Latte caliente (16oz)",
+    "fecha_hora": "2026-04-15T19:37:42-06:00"
+  },
+  {
+    "placa_normalizada": "P748JFH",
+    "placa_original": "P748JFH",
+    "nombre": "Mitsubishi gris",
+    "orden": "Bianca Mocca (12oz)",
+    "fecha_hora": "2026-04-15T19:41:23-06:00"
+  },
+  {
+    "placa_normalizada": "PO69FPK",
+    "placa_original": "PO69FPK",
+    "nombre": "Audi negro ken",
+    "orden": "Matcha Latte caliente (16oz)",
+    "fecha_hora": "2026-04-15T20:21:56-06:00"
+  },
+  {
+    "placa_normalizada": "P23ODRX",
+    "placa_original": "P23ODRX",
+    "nombre": "Tucson Irishi",
+    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
+    "fecha_hora": "2026-04-15T20:23:53-06:00"
+  },
+  {
+    "placa_normalizada": "P069FPK",
+    "placa_original": "P069FPK",
+    "nombre": "Audi Ken",
+    "orden": "Matcha Latte caliente (16oz)",
+    "fecha_hora": "2026-04-15T21:42:30-06:00"
   }
 ]

@@ -185,7 +185,7 @@ function updateNameRow(state) {
 
 function updateDisplay(state) {
     lastState = state;
-    elements.displayCard.classList.remove("returning", "new-customer");
+    elements.displayCard.classList.remove("returning", "new-customer", "detection-failed");
 
     if (state.type === "idle") {
         elements.greeting.textContent = state.message;
@@ -199,6 +199,19 @@ function updateDisplay(state) {
         pendingOrder = null;
         elements.pendingBar.hidden = true;
         elements.customerNameInput.value = "";
+    } else if (state.type === "detection_failed") {
+        elements.displayCard.classList.add("detection-failed");
+        elements.greeting.textContent = state.message || "";
+        elements.customerName.textContent = "";
+        elements.plateBadge.textContent = "";
+        elements.orderHint.textContent = "";
+        elements.visitsBadge.textContent = "";
+        elements.actionPanel.hidden = true;
+        elements.nameRow.hidden = true;
+        elements.pendingBar.hidden = true;
+        lastServerPlate = null;
+        differentOrderMode = false;
+        pendingOrder = null;
     } else {
         resetSessionForPlate(state.plate);
         elements.plateBadge.textContent = state.plate || "";

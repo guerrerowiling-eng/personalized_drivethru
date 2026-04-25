@@ -160,6 +160,11 @@ body {
     box-shadow: 0 0 40px rgba(29, 161, 242, 0.15);
 }
 
+.display-card.detection-failed {
+    border-color: rgba(224, 86, 86, 0.35);
+    box-shadow: 0 0 36px rgba(224, 86, 86, 0.12);
+}
+
 .greeting {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;

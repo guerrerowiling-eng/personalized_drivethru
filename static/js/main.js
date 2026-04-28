@@ -14,14 +14,13 @@ let filterText = "";
 /** @type {object | null} */
 let lastState = null;
 let appliedCameraMode = null;
+let nicknameModalOpen = false;
 
 const elements = {
     displayCard: document.getElementById("displayCard"),
     greeting: document.getElementById("greeting"),
-    customerName: document.getElementById("customerName"),
     plateBadge: document.getElementById("plateBadge"),
     orderHint: document.getElementById("orderHint"),
-    visitsBadge: document.getElementById("visitsBadge"),
     plateInput: document.getElementById("plateInput"),
     btnLookup: document.getElementById("btnLookup"),
     btnSimulate: document.getElementById("btnSimulate"),
@@ -32,6 +31,7 @@ const elements = {
     btnDifferentOrder: document.getElementById("btnDifferentOrder"),
     nameRow: document.getElementById("nameRow"),
     customerNameInput: document.getElementById("customerNameInput"),
+    btnSaveNickname: document.getElementById("btnSaveNickname"),
     btnOpenMenu: document.getElementById("btnOpenMenu"),
     pendingBar: document.getElementById("pendingBar"),
     pendingLabel: document.getElementById("pendingLabel"),
@@ -47,6 +47,12 @@ const elements = {
     cameraPreviewPlaceholder: document.getElementById("cameraPreviewPlaceholder"),
     cameraModeLabel: document.getElementById("cameraModeLabel"),
     btnCameraToggle: document.getElementById("btnCameraToggle"),
+    btnEditNickname: document.getElementById("btnEditNickname"),
+    nicknameModalBackdrop: document.getElementById("nicknameModalBackdrop"),
+    nicknameModal: document.getElementById("nicknameModal"),
+    nicknameModalInput: document.getElementById("nicknameModalInput"),
+    btnCancelNicknameModal: document.getElementById("btnCancelNicknameModal"),
+    btnSaveNicknameModal: document.getElementById("btnSaveNicknameModal"),
 };
 
 function stopCameraPreview() {
@@ -176,24 +182,68 @@ function onPickMenuItem(item) {
 }
 
 function updateNameRow(state) {
-    const isNew = state.type === "new";
-    elements.nameRow.hidden = !isNew;
-    if (isNew && state.hint_nombre && !elements.customerNameInput.value.trim()) {
-        elements.customerNameInput.value = state.hint_nombre;
+    const show = !!state.needs_nickname;
+    elements.nameRow.hidden = !show;
+    if (show && state.hint_nickname && !elements.customerNameInput.value.trim()) {
+        elements.customerNameInput.value = state.hint_nickname;
+    }
+}
+
+function setNicknameModalOpen(open) {
+    nicknameModalOpen = !!open;
+    elements.nicknameModalBackdrop.hidden = !open;
+    elements.nicknameModal.hidden = !open;
+    elements.nicknameModalBackdrop.setAttribute("aria-hidden", open ? "false" : "true");
+    elements.nicknameModal.setAttribute("aria-hidden", open ? "false" : "true");
+    if (open) {
+        elements.nicknameModalInput.value = (lastState?.customer?.nickname || "").trim();
+        elements.nicknameModalInput.focus();
+    }
+}
+
+async function saveNicknameForCurrentPlate(nickname) {
+    const plate = activePlate();
+    if (!plate) {
+        showError("No hay placa activa.");
+        return false;
+    }
+    const nick = (nickname || "").trim();
+    if (!nick) {
+        showError("Escribe el apodo");
+        return false;
+    }
+    try {
+        const res = await fetch("/api/update-nickname", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ plate, nickname: nick }),
+        });
+        const data = await res.json();
+        if (!data.ok) {
+            showError(data.error || "No se pudo guardar el apodo");
+            return false;
+        }
+        if (data.state) updateDisplay(data.state);
+        return true;
+    } catch (e) {
+        console.error(e);
+        showError("Error de red al guardar el apodo");
+        return false;
     }
 }
 
 function updateDisplay(state) {
     lastState = state;
     elements.displayCard.classList.remove("returning", "new-customer", "detection-failed");
+    document.body.dataset.viewState = state.type || "idle";
 
     if (state.type === "idle") {
         elements.greeting.textContent = state.message;
-        elements.customerName.textContent = "";
         elements.plateBadge.textContent = "";
         elements.orderHint.textContent = "";
-        elements.visitsBadge.textContent = "";
         elements.actionPanel.hidden = true;
+        elements.btnEditNickname.hidden = true;
+        elements.btnOpenMenu.hidden = false;
         lastServerPlate = null;
         differentOrderMode = false;
         pendingOrder = null;
@@ -202,11 +252,11 @@ function updateDisplay(state) {
     } else if (state.type === "detection_failed") {
         elements.displayCard.classList.add("detection-failed");
         elements.greeting.textContent = state.message || "";
-        elements.customerName.textContent = "";
         elements.plateBadge.textContent = "";
         elements.orderHint.textContent = "";
-        elements.visitsBadge.textContent = "";
         elements.actionPanel.hidden = true;
+        elements.btnEditNickname.hidden = true;
+        elements.btnOpenMenu.hidden = false;
         elements.nameRow.hidden = true;
         elements.pendingBar.hidden = true;
         lastServerPlate = null;
@@ -214,31 +264,38 @@ function updateDisplay(state) {
         pendingOrder = null;
     } else {
         resetSessionForPlate(state.plate);
-        elements.plateBadge.textContent = state.plate || "";
+        elements.plateBadge.textContent = state.plate ? `Placa ${state.plate}` : "";
+
+        if (state.customer?.nickname) {
+            elements.greeting.textContent = `¡Hola ${state.customer.nickname}!`;
+        } else if (state.needs_nickname) {
+            elements.greeting.textContent = "¡Bienvenido!";
+        } else {
+            elements.greeting.textContent = state.message || "¡Hola!";
+        }
 
         if (state.type === "returning") {
             elements.displayCard.classList.add("returning");
-            elements.greeting.textContent = state.message || "";
-            elements.customerName.textContent = state.customer
-                ? state.customer.nombre
-                : "";
         } else {
             elements.displayCard.classList.add("new-customer");
-            elements.greeting.textContent = state.message || "";
-            elements.customerName.textContent = "";
         }
-
-        const pv = state.prior_visits ?? 0;
-        elements.visitsBadge.textContent =
-            pv > 0 ? `Visitas registradas: ${pv}` : "Primera visita en historial";
 
         const showSug =
             state.show_suggestion_actions &&
             state.suggested_order &&
-            !differentOrderMode;
+            !differentOrderMode &&
+            !state.needs_nickname &&
+            !!state.customer?.nickname;
 
         elements.actionPanel.hidden = false;
         elements.suggestionActions.hidden = !showSug;
+        elements.btnEditNickname.hidden = !state.customer?.nickname;
+        elements.btnOpenMenu.hidden = !!state.needs_nickname;
+        if (state.needs_nickname) {
+            // Bloque duro: en cliente nuevo nunca mostramos acciones de "mismo/otro".
+            differentOrderMode = false;
+            elements.suggestionActions.hidden = true;
+        }
 
         if (differentOrderMode) {
             elements.orderHint.textContent = "Elige otro pedido en el menú";
@@ -251,6 +308,9 @@ function updateDisplay(state) {
         }
 
         updateNameRow(state);
+        if (state.needs_nickname) {
+            elements.pendingBar.hidden = true;
+        }
     }
 
     elements.lastPlate.textContent = state.plate ? `Placa: ${state.plate}` : "";
@@ -292,8 +352,8 @@ async function recordVisit(orden, nombreOverride) {
         return;
     }
     const body = { plate, orden };
-    const name = (nombreOverride ?? elements.customerNameInput.value).trim();
-    if (name) body.nombre = name;
+    const nickname = (nombreOverride ?? elements.customerNameInput.value).trim();
+    if (nickname) body.nickname = nickname;
 
     try {
         const res = await fetch("/api/record-visit", {
@@ -343,13 +403,13 @@ async function simulateArrival() {
 elements.btnSameOrder.addEventListener("click", () => {
     if (!lastState || !lastState.suggested_order) return;
     if (lastState.type === "new") {
-        const nombre = elements.customerNameInput.value.trim();
-        if (!nombre) {
-            showError("Escribe el nombre del cliente");
+        const nickname = (lastState.customer?.nickname || elements.customerNameInput.value).trim();
+        if (!nickname) {
+            showError("Escribe cómo le gusta que le llamen");
             elements.customerNameInput.focus();
             return;
         }
-        recordVisit(lastState.suggested_order, nombre);
+        recordVisit(lastState.suggested_order, nickname);
     } else {
         recordVisit(lastState.suggested_order);
     }
@@ -396,16 +456,23 @@ elements.btnConfirmVisit.addEventListener("click", () => {
         return;
     }
     if (lastState && lastState.type === "new") {
-        const nombre = elements.customerNameInput.value.trim();
-        if (!nombre) {
-            showError("Escribe el nombre del cliente");
+        const nickname = (lastState.customer?.nickname || elements.customerNameInput.value).trim();
+        if (!nickname) {
+            showError("Escribe cómo le gusta que le llamen");
             elements.customerNameInput.focus();
             return;
         }
-        recordVisit(pendingOrder, nombre);
+        recordVisit(pendingOrder, nickname);
     } else {
         recordVisit(pendingOrder);
     }
+});
+
+elements.btnSaveNickname.addEventListener("click", async () => {
+    const ok = await saveNicknameForCurrentPlate(elements.customerNameInput.value);
+    if (!ok) return;
+    elements.customerNameInput.value = "";
+    openMenu();
 });
 
 elements.btnLookup.addEventListener("click", () => {
@@ -455,6 +522,30 @@ elements.cameraPreviewImg.addEventListener("error", () => {
     elements.cameraPreviewImg.hidden = true;
     elements.cameraPreviewPlaceholder.hidden = false;
     elements.cameraPreviewPlaceholder.textContent = "Vista previa no disponible";
+});
+
+elements.btnEditNickname.addEventListener("click", () => {
+    setNicknameModalOpen(true);
+});
+
+elements.btnCancelNicknameModal.addEventListener("click", () => {
+    setNicknameModalOpen(false);
+});
+
+elements.nicknameModalBackdrop.addEventListener("click", () => {
+    setNicknameModalOpen(false);
+});
+
+elements.btnSaveNicknameModal.addEventListener("click", async () => {
+    const ok = await saveNicknameForCurrentPlate(elements.nicknameModalInput.value);
+    if (!ok) return;
+    setNicknameModalOpen(false);
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nicknameModalOpen) {
+        setNicknameModalOpen(false);
+    }
 });
 
 fetchMenuOnce();

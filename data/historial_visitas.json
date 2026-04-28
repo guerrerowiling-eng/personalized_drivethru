@@ -1391,5 +1391,194 @@
     "nombre": "Audi Ken",
     "orden": "Matcha Latte caliente (16oz)",
     "fecha_hora": "2026-04-15T21:42:30-06:00"
+  },
+  {
+    "placa_normalizada": "PNEW001",
+    "placa_original": "PNEW001",
+    "nombre": "Test",
+    "orden": "Cappuccino (16oz)",
+    "fecha_hora": "2026-04-27T20:48:57-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:26-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:29-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:32-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:36-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:37-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:38-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:39-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:39-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:39-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:39-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:39-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Cappuccino (16oz)",
+    "fecha_hora": "2026-04-27T20:49:43-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bianca Mocca (12oz)",
+    "fecha_hora": "2026-04-27T20:49:55-06:00"
+  },
+  {
+    "placa_normalizada": "MNO345",
+    "placa_original": "MNO345",
+    "nombre": "Luis Fernández",
+    "orden": "Bocata jamón y queso",
+    "fecha_hora": "2026-04-27T20:49:59-06:00"
+  },
+  {
+    "placa_normalizada": "GHI789",
+    "placa_original": "GHI789",
+    "nombre": "Pedro Sánchez",
+    "orden": "Matcha Frío (12oz)",
+    "fecha_hora": "2026-04-27T20:50:04-06:00"
+  },
+  {
+    "placa_normalizada": "P294DPB",
+    "placa_original": "P294DPB",
+    "nombre": "Tundra Blanco",
+    "orden": "Cappuccino (16oz)",
+    "fecha_hora": "2026-04-27T20:50:31-06:00"
+  },
+  {
+    "placa_normalizada": "P294DPB",
+    "placa_original": "P294DPB",
+    "nombre": "Tundra Blanco",
+    "orden": "Latte (12oz)",
+    "fecha_hora": "2026-04-27T20:50:36-06:00"
+  },
+  {
+    "placa_normalizada": "JCX820",
+    "placa_original": "JCX820",
+    "nombre": "pooo",
+    "orden": "Bianca Mocca (12oz)",
+    "fecha_hora": "2026-04-27T20:53:59-06:00"
+  },
+  {
+    "placa_normalizada": "P748JFH",
+    "placa_original": "P748JFH",
+    "nombre": "Mitsubishi gris",
+    "orden": "Latte (12oz)",
+    "fecha_hora": "2026-04-27T20:55:09-06:00"
+  },
+  {
+    "placa_normalizada": "LWK131",
+    "placa_original": "LWK131",
+    "nombre": "probando",
+    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
+    "fecha_hora": "2026-04-27T20:55:15-06:00"
+  },
+  {
+    "placa_normalizada": "LWK131",
+    "placa_original": "LWK131",
+    "nombre": "probando",
+    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
+    "fecha_hora": "2026-04-27T20:55:16-06:00"
+  },
+  {
+    "placa_normalizada": "PNEW001",
+    "placa_original": "PNEW001",
+    "nombre": "Test",
+    "orden": "Cappuccino (16oz)",
+    "fecha_hora": "2026-04-27T21:13:27-06:00"
+  },
+  {
+    "placa_normalizada": "PTR626",
+    "placa_original": "PTR626",
+    "nombre": "luix",
+    "orden": "Cappuccino (12oz)",
+    "fecha_hora": "2026-04-27T21:13:47-06:00"
+  },
+  {
+    "placa_normalizada": "EVW024",
+    "placa_original": "EVW024",
+    "nombre": "er",
+    "orden": "Bianca Mocca (16oz)",
+    "fecha_hora": "2026-04-27T21:14:07-06:00"
+  },
+  {
+    "placa_normalizada": "ABC123",
+    "placa_original": "ABC123",
+    "nombre": "Carlos Mendoza",
+    "orden": "Latte (12oz)",
+    "fecha_hora": "2026-04-27T21:14:12-06:00"
+  },
+  {
+    "placa_normalizada": "ABC123",
+    "placa_original": "ABC123",
+    "nombre": "Carlos Mendoza",
+    "orden": "Latte (12oz)",
+    "fecha_hora": "2026-04-27T21:14:14-06:00"
   }
 ]

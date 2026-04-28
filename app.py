@@ -7,10 +7,16 @@ información personalizada al operador.
 import re
 import threading
 import time
+from datetime import datetime, timezone
 from flask import Flask, jsonify, render_template, request, Response
 
 import config
-from services.customer_db import get_customer_by_plate, normalize_plate, upsert_customer
+from services.customer_db import (
+    get_customer_by_plate,
+    normalize_plate,
+    update_customer_nickname,
+    upsert_customer,
+)
 from services.menu_data import MENU_CATEGORIES, is_valid_order
 from services.plate_ocr import (
     get_cached_preview_jpeg,
@@ -64,7 +70,8 @@ def _build_operator_state(plate: str | None) -> dict:
             "suggestion_text": None,
             "suggested_order": None,
             "show_suggestion_actions": False,
-            "hint_nombre": None,
+            "hint_nickname": None,
+            "needs_nickname": False,
             "camera_mode": cm,
         }
 
@@ -78,7 +85,8 @@ def _build_operator_state(plate: str | None) -> dict:
             "suggestion_text": None,
             "suggested_order": None,
             "show_suggestion_actions": False,
-            "hint_nombre": None,
+            "hint_nickname": None,
+            "needs_nickname": False,
             "camera_mode": cm,
         }
 
@@ -88,26 +96,16 @@ def _build_operator_state(plate: str | None) -> dict:
     prior = len(visits)
     sug_text, sug_order = visit_history.suggestion_from_history(visits)
 
-    hint_nombre = None
+    hint_nickname = None
     if not customer and visits:
-        hint_nombre = (visits[-1].get("nombre") or "").strip() or None
+        hint_nickname = (visits[-1].get("nombre") or "").strip() or None
 
     if customer:
-        message = f"Hola {customer['nombre']}"
-        if prior == 0:
-            message = f"{message} — ¿qué deseas hoy?"
+        nickname = (customer.get("nickname") or customer.get("nombre") or "").strip()
+        message = f"¡Hola {nickname}!" if nickname else "¡Hola!"
         typ = "returning"
     else:
-        if prior == 0:
-            message = "Cliente nuevo — pide nombre y elige el pedido en el menú"
-        elif sug_text:
-            last_name = hint_nombre or ""
-            if last_name:
-                message = f"Cliente reconocido ({last_name})"
-            else:
-                message = "Cliente reconocido"
-        else:
-            message = "Cliente nuevo — completa registro"
+        message = "¡Bienvenido!"
         typ = "new"
 
     return {
@@ -115,9 +113,12 @@ def _build_operator_state(plate: str | None) -> dict:
         "message": message,
         "plate": plate.strip().upper(),
         "customer": {
-            "nombre": customer["nombre"],
+            "nickname": customer["nickname"],
+            "nombre": customer["nickname"],
             "orden_favorita": customer["orden_favorita"],
             "visitas": customer["visitas"],
+            "fecha_registro": customer.get("fecha_registro", ""),
+            "ultima_visita": customer.get("ultima_visita", ""),
         }
         if customer
         else None,
@@ -125,7 +126,8 @@ def _build_operator_state(plate: str | None) -> dict:
         "suggestion_text": sug_text,
         "suggested_order": sug_order,
         "show_suggestion_actions": bool(sug_order),
-        "hint_nombre": hint_nombre,
+        "hint_nickname": hint_nickname,
+        "needs_nickname": not bool(customer),
         "camera_mode": cm,
     }
 
@@ -252,7 +254,7 @@ def api_simulate_arrival():
     return jsonify(_build_operator_state(out_plate))
 
 
-def _sync_customer_after_visit(plate: str, nombre_resolved: str) -> None:
+def _sync_customer_after_visit(plate: str, nickname_resolved: str) -> None:
     norm = normalize_plate(plate)
     visits = visit_history.visits_for_plate(norm)
     usual = visit_history.most_common_order(visits)
@@ -260,19 +262,59 @@ def _sync_customer_after_visit(plate: str, nombre_resolved: str) -> None:
         usual = visits[-1].get("orden", "")
     if not usual:
         usual = ""
-    upsert_customer(plate, nombre_resolved, usual, visitas=len(visits))
+    now_iso = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+    existing = get_customer_by_plate(plate)
+    fecha_registro = (existing or {}).get("fecha_registro") or now_iso
+    upsert_customer(
+        plate,
+        nickname_resolved,
+        usual,
+        visitas=len(visits),
+        fecha_registro=fecha_registro,
+        ultima_visita=now_iso,
+    )
+
+
+@app.route("/api/update-nickname", methods=["POST"])
+def api_update_nickname():
+    """Actualiza solo el nickname de una placa existente."""
+    data = request.get_json() or {}
+    plate = (data.get("plate") or "").strip()
+    nickname = (data.get("nickname") or "").strip()
+    if not plate:
+        return jsonify({"ok": False, "error": "Falta la placa"}), 400
+    if not nickname:
+        return jsonify({"ok": False, "error": "Escribe el apodo"}), 400
+
+    existing = get_customer_by_plate(plate)
+    if existing:
+        updated = update_customer_nickname(plate, nickname)
+        if not updated:
+            return jsonify({"ok": False, "error": "No se pudo actualizar"}), 500
+        return jsonify({"ok": True, "state": _build_operator_state(plate)})
+
+    now_iso = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+    upsert_customer(
+        plate=plate,
+        nickname=nickname,
+        orden_favorita="",
+        visitas=0,
+        fecha_registro=now_iso,
+        ultima_visita=now_iso,
+    )
+    return jsonify({"ok": True, "state": _build_operator_state(plate)})
 
 
 @app.route("/api/record-visit", methods=["POST"])
 def api_record_visit():
     """
-    Registra la visita actual: placa, nombre (si aplica), pedido del menú.
+    Registra la visita actual: placa, nickname (si aplica), pedido del menú.
     Actualiza historial JSON y CSV de clientes.
     """
     data = request.get_json() or {}
     plate = (data.get("plate") or "").strip()
     orden = (data.get("orden") or "").strip()
-    nombre = (data.get("nombre") or "").strip()
+    nickname = (data.get("nickname") or data.get("nombre") or "").strip()
 
     if not plate:
         return jsonify({"ok": False, "error": "Falta la placa"}), 400
@@ -286,17 +328,19 @@ def api_record_visit():
     if visits_before:
         fallback_name = (visits_before[-1].get("nombre") or "").strip()
 
-    if not existing and not nombre and not fallback_name:
-        return jsonify({"ok": False, "error": "Escribe el nombre del cliente"}), 400
+    if not existing and not nickname and not fallback_name:
+        return jsonify({"ok": False, "error": "Escribe cómo le gusta que le llamen"}), 400
 
-    nombre_final = nombre or (existing["nombre"] if existing else "") or fallback_name
+    nickname_final = (
+        nickname or (existing["nickname"] if existing else "") or fallback_name
+    )
     visit_history.append_visit(
         placa_normalizada=norm,
         placa_original=plate.strip().upper(),
-        nombre=nombre_final,
+        nombre=nickname_final,
         orden=orden,
     )
-    _sync_customer_after_visit(plate, nombre_final)
+    _sync_customer_after_visit(plate, nickname_final)
 
     with _plate_lock:
         current = _current_plate

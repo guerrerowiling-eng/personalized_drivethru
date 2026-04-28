@@ -32,10 +32,9 @@
         <main class="main">
             <div class="display-card" id="displayCard">
                 <div class="greeting" id="greeting">Esperando cliente…</div>
-                <div class="customer-name" id="customerName"></div>
-                <div class="plate-badge" id="plateBadge"></div>
+                <button type="button" class="nickname-edit-btn" id="btnEditNickname" hidden aria-label="Cambiar nombre">✎ Cambiar nombre</button>
+                <div class="plate-badge plate-badge--discrete" id="plateBadge"></div>
                 <div class="order-hint" id="orderHint"></div>
-                <div class="visits-badge" id="visitsBadge"></div>
             </div>
 
             <div class="action-panel" id="actionPanel" hidden>
@@ -45,8 +44,9 @@
                 </div>
 
                 <div class="name-row" id="nameRow" hidden>
-                    <label for="customerNameInput">Nombre del cliente</label>
-                    <input type="text" id="customerNameInput" class="input-large" placeholder="Nombre" autocomplete="name" enterkeyhint="done">
+                    <label for="customerNameInput">¿Cómo te gusta que te llamen?</label>
+                    <input type="text" id="customerNameInput" class="input-large" placeholder="Apodo" autocomplete="name" enterkeyhint="done">
+                    <button type="button" class="btn btn-primary btn-block" id="btnSaveNickname">GUARDAR Y CONTINUAR</button>
                 </div>
 
                 <div class="menu-actions">
@@ -85,6 +85,16 @@
                 <button type="button" class="btn-close-menu-footer" id="btnCloseMenuFooter">Cerrar menú</button>
             </div>
         </aside>
+
+        <div class="modal-backdrop" id="nicknameModalBackdrop" hidden aria-hidden="true"></div>
+        <section class="nickname-modal" id="nicknameModal" role="dialog" aria-modal="true" aria-label="Cambiar nombre" hidden aria-hidden="true">
+            <h2>Cambiar nombre</h2>
+            <input type="text" id="nicknameModalInput" class="input-large" placeholder="Nuevo apodo" autocomplete="name">
+            <div class="nickname-modal-actions">
+                <button type="button" class="btn btn-secondary" id="btnCancelNicknameModal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnSaveNicknameModal">Guardar</button>
+            </div>
+        </section>
 
         <footer class="footer">
             <span id="lastPlate"></span>

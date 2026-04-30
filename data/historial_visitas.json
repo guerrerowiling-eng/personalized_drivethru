@@ -1,1584 +1,363 @@
 [
   {
-    "placa_normalizada": "YZA567",
-    "placa_original": "YZA567",
-    "nombre": "Ricardo Torres",
-    "orden": "Mocca (12oz)",
-    "fecha_hora": "2026-04-05T17:52:11-06:00"
-  },
-  {
-    "placa_normalizada": "JKL012",
-    "placa_original": "JKL012",
-    "nombre": "Ana Rodríguez",
-    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
-    "fecha_hora": "2026-04-05T17:53:55-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Americano (12oz)",
-    "fecha_hora": "2026-04-05T17:54:00-06:00"
-  },
-  {
-    "placa_normalizada": "JKL012",
-    "placa_original": "JKL012",
-    "nombre": "Ana Rodríguez",
-    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
-    "fecha_hora": "2026-04-05T17:54:50-06:00"
-  },
-  {
-    "placa_normalizada": "JKL012",
-    "placa_original": "JKL012",
-    "nombre": "Ana Rodríguez",
-    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
-    "fecha_hora": "2026-04-05T17:54:52-06:00"
-  },
-  {
-    "placa_normalizada": "JKL012",
-    "placa_original": "JKL012",
-    "nombre": "Ana Rodríguez",
-    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
-    "fecha_hora": "2026-04-05T17:54:54-06:00"
-  },
-  {
-    "placa_normalizada": "JKL012",
-    "placa_original": "JKL012",
-    "nombre": "Ana Rodríguez",
-    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
-    "fecha_hora": "2026-04-05T17:54:55-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Banana Bread",
-    "fecha_hora": "2026-04-05T17:55:04-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cheesecake",
-    "fecha_hora": "2026-04-05T17:55:16-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:08:13-06:00"
-  },
-  {
-    "placa_normalizada": "JKL012",
-    "placa_original": "JKL012",
-    "nombre": "Ana Rodríguez",
-    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
-    "fecha_hora": "2026-04-05T18:08:40-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T18:09:27-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T18:09:48-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Iced Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:10:01-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T18:10:05-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T18:10:06-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Frappé Caramel (12oz)",
-    "fecha_hora": "2026-04-05T18:10:10-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Frappé Mocca (16oz)",
-    "fecha_hora": "2026-04-05T18:10:15-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Frappé Caramel (12oz)",
-    "fecha_hora": "2026-04-05T18:10:24-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Frappé Caramel (16oz)",
-    "fecha_hora": "2026-04-05T18:10:30-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-05T18:10:34-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-05T18:10:39-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-05T18:10:42-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-05T18:10:44-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-05T18:11:00-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-05T18:11:04-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:11:19-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:11:28-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:11:32-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:11:35-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:11:38-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:11:42-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Caramel Macchiato (16oz)",
-    "fecha_hora": "2026-04-05T18:22:17-06:00"
-  },
-  {
-    "placa_normalizada": "GHI789",
-    "placa_original": "GHI789",
-    "nombre": "Pedro Sánchez",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-05T18:22:53-06:00"
-  },
-  {
-    "placa_normalizada": "ICN642",
-    "placa_original": "ICN642",
-    "nombre": "la tuya sot",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T18:23:08-06:00"
-  },
-  {
-    "placa_normalizada": "ICN642",
-    "placa_original": "ICN642",
-    "nombre": "la tuya sot",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T18:23:41-06:00"
-  },
-  {
-    "placa_normalizada": "YZA567",
-    "placa_original": "YZA567",
-    "nombre": "Ricardo Torres",
-    "orden": "Mocca (12oz)",
-    "fecha_hora": "2026-04-05T18:23:44-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:24-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:31-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:31-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:32-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:32-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:33-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:33-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:24:33-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Caramel Macchiato (16oz)",
-    "fecha_hora": "2026-04-05T18:24:44-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Mocca (12oz)",
-    "fecha_hora": "2026-04-05T18:24:54-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Matcha Latte caliente (12oz)",
-    "fecha_hora": "2026-04-05T18:25:00-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Infusión / Té — Té negro",
-    "fecha_hora": "2026-04-05T18:25:05-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Iced Coffee (12oz)",
-    "fecha_hora": "2026-04-05T18:25:11-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Frappé Mocca (12oz)",
-    "fecha_hora": "2026-04-05T18:25:16-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T18:25:22-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-05T18:25:28-06:00"
-  },
-  {
-    "placa_normalizada": "PQR678",
-    "placa_original": "PQR678",
-    "nombre": "Carmen López",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T18:51:55-06:00"
-  },
-  {
-    "placa_normalizada": "PQR678",
-    "placa_original": "PQR678",
-    "nombre": "Carmen López",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T18:52:00-06:00"
-  },
-  {
-    "placa_normalizada": "PQR678",
-    "placa_original": "PQR678",
-    "nombre": "Carmen López",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T18:52:04-06:00"
-  },
-  {
-    "placa_normalizada": "PQR678",
-    "placa_original": "PQR678",
-    "nombre": "Carmen López",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:52:11-06:00"
-  },
-  {
-    "placa_normalizada": "PQR678",
-    "placa_original": "PQR678",
-    "nombre": "Carmen López",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:52:49-06:00"
-  },
-  {
-    "placa_normalizada": "PQR678",
-    "placa_original": "PQR678",
-    "nombre": "Carmen López",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:52:56-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T18:53:29-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T18:53:34-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Mocca (16oz)",
-    "fecha_hora": "2026-04-05T18:53:38-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Infusión / Té — Té negro",
-    "fecha_hora": "2026-04-05T18:53:42-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Iced Coffee (16oz)",
-    "fecha_hora": "2026-04-05T18:53:45-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Frappé Caramel (12oz)",
-    "fecha_hora": "2026-04-05T18:53:49-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Matcha Frío (16oz)",
-    "fecha_hora": "2026-04-05T18:53:55-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Bocata de desayuno atún",
-    "fecha_hora": "2026-04-05T18:53:59-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Ensalada César con pollo",
-    "fecha_hora": "2026-04-05T18:54:03-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Panini pollo",
-    "fecha_hora": "2026-04-05T18:54:19-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Ensalada Primavera",
-    "fecha_hora": "2026-04-05T18:54:22-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Ensalada César con pollo",
-    "fecha_hora": "2026-04-05T18:54:29-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Combo lunch (panini o bocata + bebida)",
-    "fecha_hora": "2026-04-05T18:54:33-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Cheesecake",
-    "fecha_hora": "2026-04-05T18:54:40-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Croissant dulce",
-    "fecha_hora": "2026-04-05T18:54:44-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Galletas",
-    "fecha_hora": "2026-04-05T18:54:47-06:00"
-  },
-  {
-    "placa_normalizada": "ZIQ888",
-    "placa_original": "ZIQ888",
-    "nombre": "wilisito",
-    "orden": "Bundt Cake",
-    "fecha_hora": "2026-04-05T18:54:53-06:00"
-  },
-  {
-    "placa_normalizada": "YQY893",
-    "placa_original": "YQY893",
-    "nombre": "lulis",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T18:55:14-06:00"
-  },
-  {
-    "placa_normalizada": "YQY893",
-    "placa_original": "YQY893",
-    "nombre": "lulis",
-    "orden": "Americano (16oz)",
-    "fecha_hora": "2026-04-05T18:55:22-06:00"
-  },
-  {
-    "placa_normalizada": "YQY893",
-    "placa_original": "YQY893",
-    "nombre": "lulis",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T18:55:28-06:00"
-  },
-  {
-    "placa_normalizada": "YQY893",
-    "placa_original": "YQY893",
-    "nombre": "lulis",
-    "orden": "Mocca (16oz)",
-    "fecha_hora": "2026-04-05T18:55:34-06:00"
-  },
-  {
-    "placa_normalizada": "YQY893",
-    "placa_original": "YQY893",
-    "nombre": "lulis",
-    "orden": "Latte (16oz)",
-    "fecha_hora": "2026-04-05T19:00:30-06:00"
-  },
-  {
-    "placa_normalizada": "YQY893",
-    "placa_original": "YQY893",
-    "nombre": "lulis",
-    "orden": "Bianca Mocca (12oz)",
-    "fecha_hora": "2026-04-05T19:00:35-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Americano (12oz)",
-    "fecha_hora": "2026-04-05T19:01:33-06:00"
-  },
-  {
-    "placa_normalizada": "FQU021",
-    "placa_original": "FQU021",
-    "nombre": "lilita",
-    "orden": "Americano (12oz)",
-    "fecha_hora": "2026-04-05T19:01:42-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:02:10-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Americano (16oz)",
-    "fecha_hora": "2026-04-05T19:02:20-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T19:02:24-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Bianca Mocca (16oz)",
-    "fecha_hora": "2026-04-05T19:02:27-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Mocca (16oz)",
-    "fecha_hora": "2026-04-05T19:02:31-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Matcha Latte caliente (16oz)",
-    "fecha_hora": "2026-04-05T19:02:36-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Infusión / Té — Manzanilla",
-    "fecha_hora": "2026-04-05T19:02:40-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Iced Coffee (12oz)",
-    "fecha_hora": "2026-04-05T19:02:45-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Iced Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:02:48-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:41-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:43-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:44-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:44-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:45-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:46-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:46-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:47-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:48-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:48-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:48-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:49-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:03:49-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Matcha Frío (16oz)",
-    "fecha_hora": "2026-04-05T19:03:53-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Matcha Frío (16oz)",
-    "fecha_hora": "2026-04-05T19:03:57-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Matcha Frío (16oz)",
-    "fecha_hora": "2026-04-05T19:04:00-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:31:04-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Americano (12oz)",
-    "fecha_hora": "2026-04-05T19:31:25-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Cappuccino (12oz)",
-    "fecha_hora": "2026-04-05T19:31:31-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:31:35-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Mocca (16oz)",
-    "fecha_hora": "2026-04-05T19:31:38-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Caramel Macchiato (16oz)",
-    "fecha_hora": "2026-04-05T19:31:42-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Chocolate Caliente (16oz)",
-    "fecha_hora": "2026-04-05T19:31:45-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Infusión / Té — Té negro",
-    "fecha_hora": "2026-04-05T19:31:48-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Iced Coffee (12oz)",
-    "fecha_hora": "2026-04-05T19:31:51-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Iced Americano (16oz)",
-    "fecha_hora": "2026-04-05T19:31:54-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Frappé Bianca Mocca (16oz)",
-    "fecha_hora": "2026-04-05T19:31:58-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-05T19:32:02-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:07-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:08-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:09-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:10-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:10-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:11-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T19:32:14-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:32:17-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:18-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:18-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:31-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:31-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:31-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-05T19:32:32-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T19:32:35-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Cappuccino (12oz)",
-    "fecha_hora": "2026-04-05T19:32:38-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Americano (16oz)",
-    "fecha_hora": "2026-04-05T19:32:39-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Matcha Latte caliente (16oz)",
-    "fecha_hora": "2026-04-05T19:32:42-06:00"
-  },
-  {
-    "placa_normalizada": "SBL978",
-    "placa_original": "SBL978",
-    "nombre": "tryto",
-    "orden": "Chocolate Caliente (12oz)",
-    "fecha_hora": "2026-04-05T19:32:44-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T19:52:09-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-05T19:52:20-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T19:52:44-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T19:53:16-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T19:53:27-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Iced Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:53:32-06:00"
-  },
-  {
-    "placa_normalizada": "DEF456",
-    "placa_original": "DEF456",
-    "nombre": "Rosa Martínez",
-    "orden": "Iced Latte (16oz)",
-    "fecha_hora": "2026-04-05T19:53:37-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Cappuccino (12oz)",
-    "fecha_hora": "2026-04-05T19:55:41-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Cappuccino (12oz)",
-    "fecha_hora": "2026-04-05T19:56:16-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Infusión / Té — Manzanilla",
-    "fecha_hora": "2026-04-05T19:56:52-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Cappuccino (12oz)",
-    "fecha_hora": "2026-04-05T19:56:59-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Iced Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:57:15-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Latte (16oz)",
-    "fecha_hora": "2026-04-05T19:57:34-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:57:47-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:57:51-06:00"
-  },
-  {
-    "placa_normalizada": "LNR798",
-    "placa_original": "LNR798",
-    "nombre": "Yaneth",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-05T19:58:03-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Café Guatemalteco / Café de la Casa (12oz)",
-    "fecha_hora": "2026-04-13T14:33:54-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Americano (12oz)",
-    "fecha_hora": "2026-04-13T14:34:03-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:34:06-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Latte (16oz)",
-    "fecha_hora": "2026-04-13T14:34:09-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bianca Mocca (12oz)",
-    "fecha_hora": "2026-04-13T14:34:13-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Mocca (12oz)",
-    "fecha_hora": "2026-04-13T14:34:17-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Caramel Macchiato (12oz)",
-    "fecha_hora": "2026-04-13T14:34:20-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Matcha Latte caliente (12oz)",
-    "fecha_hora": "2026-04-13T14:34:23-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Chocolate Caliente (16oz)",
-    "fecha_hora": "2026-04-13T14:34:27-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Iced Coffee (12oz)",
-    "fecha_hora": "2026-04-13T14:34:30-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Iced Americano (12oz)",
-    "fecha_hora": "2026-04-13T14:34:34-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Frappé Bianca Mocca (16oz)",
-    "fecha_hora": "2026-04-13T14:34:37-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:41-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:43-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:46-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:47-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:49-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:50-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:51-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:51-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:52-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-13T14:34:59-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Latte (16oz)",
-    "fecha_hora": "2026-04-13T14:35:04-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-13T14:36:38-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Latte (16oz)",
-    "fecha_hora": "2026-04-13T14:36:40-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Latte (16oz)",
-    "fecha_hora": "2026-04-13T14:36:43-06:00"
-  },
-  {
-    "placa_normalizada": "HWE311",
-    "placa_original": "HWE311",
-    "nombre": "willisex",
-    "orden": "Latte (16oz)",
-    "fecha_hora": "2026-04-13T14:36:46-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-13T14:37:02-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:07-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:10-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:13-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:16-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:18-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:22-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:25-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-13T14:39:28-06:00"
-  },
-  {
-    "placa_normalizada": "NES813",
-    "placa_original": "NES813",
-    "nombre": "wili",
-    "orden": "Matcha Latte caliente (12oz)",
-    "fecha_hora": "2026-04-13T15:24:45-06:00"
-  },
-  {
-    "placa_normalizada": "P294DPB",
-    "placa_original": "P294DPB",
-    "nombre": "Toyota Tundra Blanco",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-15T19:22:08-06:00"
-  },
-  {
-    "placa_normalizada": "PO69FPK",
-    "placa_original": "PO69FPK",
-    "nombre": "Audi negro ken",
-    "orden": "Matcha Latte caliente (16oz)",
-    "fecha_hora": "2026-04-15T19:37:42-06:00"
-  },
-  {
-    "placa_normalizada": "P748JFH",
-    "placa_original": "P748JFH",
-    "nombre": "Mitsubishi gris",
-    "orden": "Bianca Mocca (12oz)",
-    "fecha_hora": "2026-04-15T19:41:23-06:00"
-  },
-  {
-    "placa_normalizada": "PO69FPK",
-    "placa_original": "PO69FPK",
-    "nombre": "Audi negro ken",
-    "orden": "Matcha Latte caliente (16oz)",
-    "fecha_hora": "2026-04-15T20:21:56-06:00"
-  },
-  {
-    "placa_normalizada": "P23ODRX",
-    "placa_original": "P23ODRX",
-    "nombre": "Tucson Irishi",
-    "orden": "Café Guatemalteco / Café de la Casa (16oz)",
-    "fecha_hora": "2026-04-15T20:23:53-06:00"
-  },
-  {
-    "placa_normalizada": "P069FPK",
-    "placa_original": "P069FPK",
-    "nombre": "Audi Ken",
-    "orden": "Matcha Latte caliente (16oz)",
-    "fecha_hora": "2026-04-15T21:42:30-06:00"
-  },
-  {
-    "placa_normalizada": "PNEW001",
-    "placa_original": "PNEW001",
-    "nombre": "Test",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-27T20:48:57-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:26-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:29-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:32-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:36-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:37-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:38-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:39-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:39-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:39-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:39-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:39-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-27T20:49:43-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bianca Mocca (12oz)",
-    "fecha_hora": "2026-04-27T20:49:55-06:00"
-  },
-  {
-    "placa_normalizada": "MNO345",
-    "placa_original": "MNO345",
-    "nombre": "Luis Fernández",
-    "orden": "Bocata jamón y queso",
-    "fecha_hora": "2026-04-27T20:49:59-06:00"
-  },
-  {
-    "placa_normalizada": "GHI789",
-    "placa_original": "GHI789",
-    "nombre": "Pedro Sánchez",
-    "orden": "Matcha Frío (12oz)",
-    "fecha_hora": "2026-04-27T20:50:04-06:00"
-  },
-  {
-    "placa_normalizada": "P294DPB",
-    "placa_original": "P294DPB",
-    "nombre": "Tundra Blanco",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-27T20:50:31-06:00"
-  },
-  {
-    "placa_normalizada": "P294DPB",
-    "placa_original": "P294DPB",
-    "nombre": "Tundra Blanco",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-27T20:50:36-06:00"
-  },
-  {
-    "placa_normalizada": "JCX820",
-    "placa_original": "JCX820",
-    "nombre": "pooo",
-    "orden": "Bianca Mocca (12oz)",
-    "fecha_hora": "2026-04-27T20:53:59-06:00"
-  },
-  {
-    "placa_normalizada": "P748JFH",
-    "placa_original": "P748JFH",
-    "nombre": "Mitsubishi gris",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-27T20:55:09-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-27T20:55:15-06:00"
-  },
-  {
-    "placa_normalizada": "LWK131",
-    "placa_original": "LWK131",
-    "nombre": "probando",
-    "orden": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-    "fecha_hora": "2026-04-27T20:55:16-06:00"
-  },
-  {
-    "placa_normalizada": "PNEW001",
-    "placa_original": "PNEW001",
-    "nombre": "Test",
-    "orden": "Cappuccino (16oz)",
-    "fecha_hora": "2026-04-27T21:13:27-06:00"
-  },
-  {
-    "placa_normalizada": "PTR626",
-    "placa_original": "PTR626",
-    "nombre": "luix",
-    "orden": "Cappuccino (12oz)",
-    "fecha_hora": "2026-04-27T21:13:47-06:00"
-  },
-  {
-    "placa_normalizada": "EVW024",
-    "placa_original": "EVW024",
-    "nombre": "er",
-    "orden": "Bianca Mocca (16oz)",
-    "fecha_hora": "2026-04-27T21:14:07-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-27T21:14:12-06:00"
-  },
-  {
-    "placa_normalizada": "ABC123",
-    "placa_original": "ABC123",
-    "nombre": "Carlos Mendoza",
-    "orden": "Latte (12oz)",
-    "fecha_hora": "2026-04-27T21:14:14-06:00"
+    "placa_normalizada": "BPV658",
+    "placa_original": "BPV658",
+    "nombre": "Keni",
+    "orden": [
+      {
+        "item": "Cappuccino (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Croissant dulce",
+        "quantity": 1
+      },
+      {
+        "item": "Croissant jamón y queso",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:17:07-06:00",
+    "suggestion_accepted": null
+  },
+  {
+    "placa_normalizada": "BPV658",
+    "placa_original": "BPV658",
+    "nombre": "Keni",
+    "orden": [
+      {
+        "item": "Cappuccino (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Mocca (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Iced Coffee (12oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:17:43-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "BPV658",
+    "placa_original": "BPV658",
+    "nombre": "Keni",
+    "orden": [
+      {
+        "item": "Cheesecake",
+        "quantity": 1
+      },
+      {
+        "item": "Bundt Cake",
+        "quantity": 1
+      },
+      {
+        "item": "Frappé Caramel (16oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:18:22-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "BPV658",
+    "placa_original": "BPV658",
+    "nombre": "Keni",
+    "orden": [
+      {
+        "item": "Mocca (16oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:18:40-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "CTQ363",
+    "placa_original": "CTQ363",
+    "nombre": "will",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (12oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:23:33-06:00",
+    "suggestion_accepted": null
+  },
+  {
+    "placa_normalizada": "CTQ363",
+    "placa_original": "CTQ363",
+    "nombre": "will",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:23:46-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "CTQ363",
+    "placa_original": "CTQ363",
+    "nombre": "will",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:23:56-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "CTQ363",
+    "placa_original": "CTQ363",
+    "nombre": "will",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:24:46-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "CTQ363",
+    "placa_original": "CTQ363",
+    "nombre": "will",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 3
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:25:06-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "VBK267",
+    "placa_original": "VBK267",
+    "nombre": "guille",
+    "orden": [
+      {
+        "item": "Caramel Macchiato (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Iced Coffee (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Huevos al gusto con frijoles, plátanos y pan artesanal",
+        "quantity": 1
+      },
+      {
+        "item": "Bocata atún",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:26:03-06:00",
+    "suggestion_accepted": null
+  },
+  {
+    "placa_normalizada": "CTQ363",
+    "placa_original": "CTQ363",
+    "nombre": "will",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 3
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:26:20-06:00",
+    "suggestion_accepted": true
+  },
+  {
+    "placa_normalizada": "VBK267",
+    "placa_original": "VBK267",
+    "nombre": "guille",
+    "orden": [
+      {
+        "item": "Panini atún",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:26:29-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "VBK267",
+    "placa_original": "VBK267",
+    "nombre": "guille",
+    "orden": [
+      {
+        "item": "Panini vegetariano",
+        "quantity": 1
+      },
+      {
+        "item": "Ensalada César con pollo",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:27:07-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "VBK267",
+    "placa_original": "VBK267",
+    "nombre": "guille",
+    "orden": [
+      {
+        "item": "Panini vegetariano",
+        "quantity": 1
+      },
+      {
+        "item": "Ensalada César con pollo",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:27:25-06:00",
+    "suggestion_accepted": true
+  },
+  {
+    "placa_normalizada": "VBK267",
+    "placa_original": "VBK267",
+    "nombre": "guille",
+    "orden": [
+      {
+        "item": "Panini vegetariano",
+        "quantity": 1
+      },
+      {
+        "item": "Ensalada César con pollo",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:27:44-06:00",
+    "suggestion_accepted": true
+  },
+  {
+    "placa_normalizada": "VBK267",
+    "placa_original": "VBK267",
+    "nombre": "guille",
+    "orden": [
+      {
+        "item": "Ensalada César con pollo",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:27:53-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "VBK267",
+    "placa_original": "VBK267",
+    "nombre": "guille",
+    "orden": [
+      {
+        "item": "Ensalada César con pollo",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-28T20:27:59-06:00",
+    "suggestion_accepted": true
+  },
+  {
+    "placa_normalizada": "PAB1234",
+    "placa_original": "PAB1234",
+    "nombre": "TestUser",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Chocolate Caliente (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Iced Americano (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Panini atún",
+        "quantity": 1
+      },
+      {
+        "item": "Bundt Cake",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-30T13:02:13-06:00",
+    "suggestion_accepted": null
+  },
+  {
+    "placa_normalizada": "PAB1234",
+    "placa_original": "PAB1234",
+    "nombre": "TestUser",
+    "orden": [
+      {
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Chocolate Caliente (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Iced Americano (12oz)",
+        "quantity": 1
+      },
+      {
+        "item": "Panini atún",
+        "quantity": 1
+      },
+      {
+        "item": "Bundt Cake",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-30T13:08:53-06:00",
+    "suggestion_accepted": true
+  },
+  {
+    "placa_normalizada": "PAB1234",
+    "placa_original": "PAB1234",
+    "nombre": "TestUser",
+    "orden": [
+      {
+        "item": "Cheesecake",
+        "quantity": 1
+      },
+      {
+        "item": "Iced Americano (16oz)",
+        "quantity": 1
+      }
+    ],
+    "fecha_hora": "2026-04-30T13:10:48-06:00",
+    "suggestion_accepted": false
+  },
+  {
+    "placa_normalizada": "PAB1234",
+    "placa_original": "PAB1234",
+    "nombre": "TestUser",
+    "orden": [
+      {
+        "item": "Matcha Frío (12oz)",
+        "quantity": 3
+      }
+    ],
+    "fecha_hora": "2026-04-30T13:12:28-06:00",
+    "suggestion_accepted": false
   }
 ]

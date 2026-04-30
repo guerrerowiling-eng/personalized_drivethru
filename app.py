@@ -125,7 +125,7 @@ def _build_operator_state(plate: str | None) -> dict:
         "prior_visits": prior,
         "suggestion_text": sug_text,
         "suggested_order": sug_order,
-        "show_suggestion_actions": bool(sug_order),
+        "show_suggestion_actions": bool(sug_order and len(sug_order) > 0),
         "hint_nickname": hint_nickname,
         "needs_nickname": not bool(customer),
         "camera_mode": cm,
@@ -257,11 +257,10 @@ def api_simulate_arrival():
 def _sync_customer_after_visit(plate: str, nickname_resolved: str) -> None:
     norm = normalize_plate(plate)
     visits = visit_history.visits_for_plate(norm)
-    usual = visit_history.most_common_order(visits)
-    if not usual and visits:
-        usual = visits[-1].get("orden", "")
-    if not usual:
-        usual = ""
+    usual_list = visit_history.most_common_order(visits)
+    if not usual_list and visits:
+        usual_list = visit_history.order_as_list(visits[-1].get("orden"))
+    usual = visit_history.format_order_summary(usual_list) if usual_list else ""
     now_iso = datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
     existing = get_customer_by_plate(plate)
     fecha_registro = (existing or {}).get("fecha_registro") or now_iso
@@ -305,21 +304,66 @@ def api_update_nickname():
     return jsonify({"ok": True, "state": _build_operator_state(plate)})
 
 
+def _parse_and_validate_items(data: dict) -> tuple[list[dict] | None, str | None]:
+    """Valida body['items']; devuelve (lista normalizada, mensaje_error_es) o (None, error)."""
+    raw = data.get("items")
+    if not isinstance(raw, list):
+        return None, "Envía la lista de ítems (items)"
+    if len(raw) < 1 or len(raw) > 10:
+        return None, "El pedido debe tener entre 1 y 10 líneas"
+    merged: dict[str, int] = {}
+    for i, row in enumerate(raw):
+        if not isinstance(row, dict):
+            return None, "Cada línea del pedido debe ser un objeto con item y quantity"
+        item = (row.get("item") or "").strip()
+        if not item or not is_valid_order(item):
+            return None, f"Ítem no válido en la línea {i + 1}"
+        q = row.get("quantity", 1)
+        try:
+            qi = int(q)
+        except (TypeError, ValueError):
+            return None, f"La cantidad debe ser un número entero (línea {i + 1})"
+        if qi < 1 or qi > 99:
+            return None, f"Cada cantidad debe estar entre 1 y 99 (línea {i + 1})"
+        merged[item] = merged.get(item, 0) + qi
+    out = [{"item": k, "quantity": v} for k, v in merged.items()]
+    total_qty = sum(r["quantity"] for r in out)
+    if total_qty > 10:
+        return None, "El total de unidades no puede superar 10"
+    if not out:
+        return None, "El pedido no tiene líneas válidas"
+    return out, None
+
+
+def _parse_suggestion_accepted(data: dict) -> bool | None:
+    v = data.get("suggestion_accepted", None)
+    if v is True or v is False:
+        return v
+    if isinstance(v, str):
+        s = v.strip().lower()
+        if s in ("true", "1", "yes"):
+            return True
+        if s in ("false", "0", "no"):
+            return False
+    return None
+
+
 @app.route("/api/record-visit", methods=["POST"])
 def api_record_visit():
     """
-    Registra la visita actual: placa, nickname (si aplica), pedido del menú.
+    Registra la visita actual: placa, items (lista), nickname (si aplica), suggestion_accepted.
     Actualiza historial JSON y CSV de clientes.
     """
     data = request.get_json() or {}
     plate = (data.get("plate") or "").strip()
-    orden = (data.get("orden") or "").strip()
     nickname = (data.get("nickname") or data.get("nombre") or "").strip()
+
+    items_norm, err = _parse_and_validate_items(data)
+    if err:
+        return jsonify({"ok": False, "error": err}), 400
 
     if not plate:
         return jsonify({"ok": False, "error": "Falta la placa"}), 400
-    if not orden or not is_valid_order(orden):
-        return jsonify({"ok": False, "error": "Selecciona un ítem válido del menú"}), 400
 
     norm = normalize_plate(plate)
     existing = get_customer_by_plate(plate)
@@ -334,11 +378,14 @@ def api_record_visit():
     nickname_final = (
         nickname or (existing["nickname"] if existing else "") or fallback_name
     )
+    suggestion_accepted = _parse_suggestion_accepted(data)
+
     visit_history.append_visit(
         placa_normalizada=norm,
         placa_original=plate.strip().upper(),
         nombre=nickname_final,
-        orden=orden,
+        orden=items_norm,
+        suggestion_accepted=suggestion_accepted,
     )
     _sync_customer_after_visit(plate, nickname_final)
 

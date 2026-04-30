@@ -59,7 +59,25 @@
                 </div>
             </div>
 
+            <section class="cart-building-shell" id="cartBuildingShell" hidden aria-label="Armar pedido">
+                <div class="cart-building-grid">
+                    <div class="cart-building-menu">
+                        <h3 class="cart-building-subtitle">Menú</h3>
+                        <input type="search" id="cartMenuFilter" class="menu-filter cart-menu-filter" placeholder="Buscar en el menú…" autocomplete="off">
+                        <div class="cart-menu-body" id="cartMenuBody"></div>
+                    </div>
+                    <aside class="cart-building-cart">
+                        <h3 class="cart-building-subtitle" id="cartHeaderCount">Pedido (0 de 10 items)</h3>
+                        <div class="cart-rows" id="cartRows"></div>
+                        <p class="cart-empty" id="cartEmptyState">Agrega items del menú</p>
+                        <button type="button" class="btn btn-primary btn-block cart-btn-confirm" id="btnConfirmCart" disabled>Confirmar pedido</button>
+                        <button type="button" class="cart-cancel-link" id="linkCancelCart">Cancelar</button>
+                    </aside>
+                </div>
+            </section>
+
             <p class="error-toast" id="errorToast" hidden></p>
+            <p class="success-toast" id="successToast" hidden></p>
 
             <div class="controls">
                 <div class="input-group">

@@ -164,22 +164,134 @@ def last_complete_order(visits: list[dict]) -> list[dict] | None:
     return None
 
 
-def suggestion_from_history(visits: list[dict]) -> tuple[str | None, list[dict] | None]:
-    """
-    Devuelve (texto_sugerencia, orden_sugerido como lista).
+# Tier boundaries for suggestion strategy (Phase 2)
+TIER_1_MAX_VISITS = 2      # 1–2 visitas: último pedido
+TIER_2_MAX_VISITS = 10     # 3–10 visitas: repetición exacta o fallback
+TIER_3_MAX_VISITS = 19     # 11–19 visitas: perfil probabilístico
+TIER_3_PLUS_MIN_VISITS = 20  # 20+ visitas: perfil probabilístico "usual"
 
-    Phase 1: siempre el último pedido completo con prefijo fijo.
-    Phase 2 TODO: restaurar lógica por niveles (Última vez / Sueles pedir / Tu usual)
-    y reintegrar conteo por frecuencia en el mensaje.
-    """
-    if not visits:
-        return None, None
+
+def _has_repeated_combo(visits: list[dict]) -> bool:
+    """True si existe alguna combinación exacta de pedido repetida (count > 1)."""
+    keys: list[str] = []
+    for v in visits:
+        ol = order_as_list(v.get("orden"))
+        if not ol:
+            continue
+        k = canonical_order_key(ol)
+        if k:
+            keys.append(k)
+    if not keys:
+        return False
+    counts = Counter(keys)
+    return any(n > 1 for n in counts.values())
+
+
+def _tier1_last_order(visits: list[dict]) -> tuple[str | None, list[dict] | None]:
     last = last_complete_order(visits)
     if not last:
         return None, None
     summary = format_order_summary(last)
-    text = f"Última vez pediste: {summary}"
-    return text, last
+    return f"Última vez pediste: {summary}", last
+
+
+def _tier2_repeated_or_last(visits: list[dict]) -> tuple[str | None, list[dict] | None]:
+    """
+    Usa combinación exacta repetida cuando existe.
+    Si no, vuelve a lógica de Tier 1.
+    """
+    if _has_repeated_combo(visits):
+        common = most_common_order(visits)
+        if common:
+            summary = format_order_summary(common)
+            return f"¿Tu pedido de siempre? {summary}", common
+    return _tier1_last_order(visits)
+
+
+def _build_probabilistic_profile(visits: list[dict]) -> list[dict]:
+    """
+    Para cada ítem, calcula % de visitas donde aparece.
+    Incluye ítems con presencia >= config.SUGGESTION_THRESHOLD.
+    Cantidad elegida por ítem: moda de cantidades observadas.
+    """
+    if not visits:
+        return []
+
+    # item -> set(indices de visita donde aparece)
+    appearance_by_item: dict[str, set[int]] = {}
+    # item -> Counter(cantidades vistas)
+    qty_counter_by_item: dict[str, Counter] = {}
+
+    for idx, v in enumerate(visits):
+        ol = order_as_list(v.get("orden"))
+        if not ol:
+            continue
+        seen_in_visit: set[str] = set()
+        for row in ol:
+            item = (row.get("item") or "").strip()
+            q = int(row.get("quantity", 1))
+            if not item:
+                continue
+            if item not in seen_in_visit:
+                appearance_by_item.setdefault(item, set()).add(idx)
+                seen_in_visit.add(item)
+            qty_counter_by_item.setdefault(item, Counter())[q] += 1
+
+    if not appearance_by_item:
+        return []
+
+    total_visits = len(visits)
+    out: list[dict] = []
+    for item, idx_set in appearance_by_item.items():
+        pct = len(idx_set) / total_visits
+        if pct < config.SUGGESTION_THRESHOLD:
+            continue
+        qty_counts = qty_counter_by_item.get(item, Counter())
+        if not qty_counts:
+            continue
+        # Moda; desempate: cantidad menor para consistencia.
+        max_n = max(qty_counts.values())
+        tied = [q for q, n in qty_counts.items() if n == max_n]
+        chosen_qty = min(tied)
+        out.append({"item": item, "quantity": int(chosen_qty)})
+
+    out.sort(key=lambda r: (r.get("item") or "").lower())
+    return out
+
+
+def suggestion_from_history(visits: list[dict]) -> tuple[str | None, list[dict] | None]:
+    """
+    Devuelve (texto_sugerencia, orden_sugerido como lista).
+    """
+    if not visits:
+        return None, None
+
+    n = len(visits)
+
+    # Tier 1 (1–2): último pedido completo
+    if n <= TIER_1_MAX_VISITS:
+        return _tier1_last_order(visits)
+
+    # Tier 2 (3–10): combinación exacta repetida, si existe
+    if n <= TIER_2_MAX_VISITS:
+        return _tier2_repeated_or_last(visits)
+
+    # Tier 3 / 3+ (11+): perfil probabilístico
+    profile = _build_probabilistic_profile(visits)
+    if profile:
+        summary = format_order_summary(profile)
+        if n <= TIER_3_MAX_VISITS:
+            return f"Sueles pedir: {summary}", profile
+        if n >= TIER_3_PLUS_MIN_VISITS:
+            return f"Tu usual: {summary}", profile
+
+    # Fallback estricto solicitado: Tier 3 -> Tier 2 -> Tier 1
+    t2_text, t2_order = _tier2_repeated_or_last(visits)
+    if t2_order:
+        return t2_text, t2_order
+
+    # Nunca devolver None/None si hay visitas: fallback mínimo a lista vacía legible.
+    return "Última vez pediste: ", []
 
 
 def suggestion_for_prior_count(prior: int, visits: list[dict]) -> tuple[str | None, list[dict] | None]:

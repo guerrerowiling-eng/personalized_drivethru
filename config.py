@@ -7,6 +7,9 @@ DATA_DIR = BASE_DIR / "data"
 CUSTOMERS_CSV = DATA_DIR / "clientes.csv"
 VISIT_HISTORY_JSON = DATA_DIR / "historial_visitas.json"
 
+# Umbral para sugerencia probabilística (Phase 2, 60%)
+SUGGESTION_THRESHOLD = 0.60
+
 # Simulación de cámara: intervalo en segundos (solo si AUTO_SIMULATE_ARRIVALS=True)
 CAMERA_SIMULATION_INTERVAL = 12
 

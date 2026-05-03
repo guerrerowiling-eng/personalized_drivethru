@@ -1,8 +1,8 @@
 [
   {
-    "placa_normalizada": "BPV658",
-    "placa_original": "BPV658",
-    "nombre": "Keni",
+    "placa_normalizada": "PAA0001",
+    "placa_original": "PAA0001",
+    "nombre": "Ana",
     "orden": [
       {
         "item": "Cappuccino (12oz)",
@@ -11,353 +11,100 @@
       {
         "item": "Croissant dulce",
         "quantity": 1
-      },
-      {
-        "item": "Croissant jamón y queso",
-        "quantity": 1
       }
     ],
-    "fecha_hora": "2026-04-28T20:17:07-06:00",
+    "fecha_hora": "2026-05-03T14:59:59-06:00",
     "suggestion_accepted": null
   },
   {
-    "placa_normalizada": "BPV658",
-    "placa_original": "BPV658",
-    "nombre": "Keni",
-    "orden": [
-      {
-        "item": "Cappuccino (12oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Mocca (12oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Iced Coffee (12oz)",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:17:43-06:00",
-    "suggestion_accepted": false
-  },
-  {
-    "placa_normalizada": "BPV658",
-    "placa_original": "BPV658",
-    "nombre": "Keni",
-    "orden": [
-      {
-        "item": "Cheesecake",
-        "quantity": 1
-      },
-      {
-        "item": "Bundt Cake",
-        "quantity": 1
-      },
-      {
-        "item": "Frappé Caramel (16oz)",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:18:22-06:00",
-    "suggestion_accepted": false
-  },
-  {
-    "placa_normalizada": "BPV658",
-    "placa_original": "BPV658",
-    "nombre": "Keni",
+    "placa_normalizada": "PAA0001",
+    "placa_original": "PAA0001",
+    "nombre": "Ana",
     "orden": [
       {
         "item": "Mocca (16oz)",
         "quantity": 1
-      },
-      {
-        "item": "Café Guatemalteco / Café de la Casa (16oz)",
-        "quantity": 1
       }
     ],
-    "fecha_hora": "2026-04-28T20:18:40-06:00",
+    "fecha_hora": "2026-05-03T15:01:12-06:00",
     "suggestion_accepted": false
   },
   {
-    "placa_normalizada": "CTQ363",
-    "placa_original": "CTQ363",
-    "nombre": "will",
+    "placa_normalizada": "PAB0002",
+    "placa_original": "PAB0002",
+    "nombre": "Beto",
     "orden": [
       {
-        "item": "Café Guatemalteco / Café de la Casa (12oz)",
-        "quantity": 1
+        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "quantity": 2
       }
     ],
-    "fecha_hora": "2026-04-28T20:23:33-06:00",
+    "fecha_hora": "2026-05-03T15:02:09-06:00",
     "suggestion_accepted": null
   },
   {
-    "placa_normalizada": "CTQ363",
-    "placa_original": "CTQ363",
-    "nombre": "will",
+    "placa_normalizada": "PAB0002",
+    "placa_original": "PAB0002",
+    "nombre": "Beto",
     "orden": [
       {
         "item": "Café Guatemalteco / Café de la Casa (16oz)",
-        "quantity": 1
+        "quantity": 2
       }
     ],
-    "fecha_hora": "2026-04-28T20:23:46-06:00",
+    "fecha_hora": "2026-05-03T15:02:55-06:00",
     "suggestion_accepted": false
   },
   {
-    "placa_normalizada": "CTQ363",
-    "placa_original": "CTQ363",
-    "nombre": "will",
+    "placa_normalizada": "PAB0002",
+    "placa_original": "PAB0002",
+    "nombre": "Beto",
     "orden": [
       {
         "item": "Café Guatemalteco / Café de la Casa (16oz)",
-        "quantity": 1
+        "quantity": 2
       }
     ],
-    "fecha_hora": "2026-04-28T20:23:56-06:00",
+    "fecha_hora": "2026-05-03T15:03:09-06:00",
     "suggestion_accepted": false
   },
   {
-    "placa_normalizada": "CTQ363",
-    "placa_original": "CTQ363",
-    "nombre": "will",
+    "placa_normalizada": "PAC0003",
+    "placa_original": "PAC0003",
+    "nombre": "Carla",
     "orden": [
       {
-        "item": "Café Guatemalteco / Café de la Casa (16oz)",
+        "item": "Cappuccino (16oz)",
         "quantity": 1
       }
     ],
-    "fecha_hora": "2026-04-28T20:24:46-06:00",
-    "suggestion_accepted": false
-  },
-  {
-    "placa_normalizada": "CTQ363",
-    "placa_original": "CTQ363",
-    "nombre": "will",
-    "orden": [
-      {
-        "item": "Café Guatemalteco / Café de la Casa (16oz)",
-        "quantity": 3
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:25:06-06:00",
-    "suggestion_accepted": false
-  },
-  {
-    "placa_normalizada": "VBK267",
-    "placa_original": "VBK267",
-    "nombre": "guille",
-    "orden": [
-      {
-        "item": "Caramel Macchiato (12oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Iced Coffee (12oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Huevos al gusto con frijoles, plátanos y pan artesanal",
-        "quantity": 1
-      },
-      {
-        "item": "Bocata atún",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:26:03-06:00",
+    "fecha_hora": "2026-05-03T15:11:17-06:00",
     "suggestion_accepted": null
   },
   {
-    "placa_normalizada": "CTQ363",
-    "placa_original": "CTQ363",
-    "nombre": "will",
+    "placa_normalizada": "PAC0003",
+    "placa_original": "PAC0003",
+    "nombre": "Carla",
     "orden": [
       {
-        "item": "Café Guatemalteco / Café de la Casa (16oz)",
-        "quantity": 3
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:26:20-06:00",
-    "suggestion_accepted": true
-  },
-  {
-    "placa_normalizada": "VBK267",
-    "placa_original": "VBK267",
-    "nombre": "guille",
-    "orden": [
-      {
-        "item": "Panini atún",
+        "item": "Mocca (12oz)",
         "quantity": 1
       }
     ],
-    "fecha_hora": "2026-04-28T20:26:29-06:00",
+    "fecha_hora": "2026-05-03T15:11:44-06:00",
     "suggestion_accepted": false
   },
   {
-    "placa_normalizada": "VBK267",
-    "placa_original": "VBK267",
-    "nombre": "guille",
+    "placa_normalizada": "PAC0003",
+    "placa_original": "PAC0003",
+    "nombre": "Carla",
     "orden": [
-      {
-        "item": "Panini vegetariano",
-        "quantity": 1
-      },
-      {
-        "item": "Ensalada César con pollo",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:27:07-06:00",
-    "suggestion_accepted": false
-  },
-  {
-    "placa_normalizada": "VBK267",
-    "placa_original": "VBK267",
-    "nombre": "guille",
-    "orden": [
-      {
-        "item": "Panini vegetariano",
-        "quantity": 1
-      },
-      {
-        "item": "Ensalada César con pollo",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:27:25-06:00",
-    "suggestion_accepted": true
-  },
-  {
-    "placa_normalizada": "VBK267",
-    "placa_original": "VBK267",
-    "nombre": "guille",
-    "orden": [
-      {
-        "item": "Panini vegetariano",
-        "quantity": 1
-      },
-      {
-        "item": "Ensalada César con pollo",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:27:44-06:00",
-    "suggestion_accepted": true
-  },
-  {
-    "placa_normalizada": "VBK267",
-    "placa_original": "VBK267",
-    "nombre": "guille",
-    "orden": [
-      {
-        "item": "Ensalada César con pollo",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:27:53-06:00",
-    "suggestion_accepted": false
-  },
-  {
-    "placa_normalizada": "VBK267",
-    "placa_original": "VBK267",
-    "nombre": "guille",
-    "orden": [
-      {
-        "item": "Ensalada César con pollo",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-28T20:27:59-06:00",
-    "suggestion_accepted": true
-  },
-  {
-    "placa_normalizada": "PAB1234",
-    "placa_original": "PAB1234",
-    "nombre": "TestUser",
-    "orden": [
-      {
-        "item": "Café Guatemalteco / Café de la Casa (16oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Chocolate Caliente (12oz)",
-        "quantity": 1
-      },
       {
         "item": "Iced Americano (12oz)",
         "quantity": 1
-      },
-      {
-        "item": "Panini atún",
-        "quantity": 1
-      },
-      {
-        "item": "Bundt Cake",
-        "quantity": 1
       }
     ],
-    "fecha_hora": "2026-04-30T13:02:13-06:00",
-    "suggestion_accepted": null
-  },
-  {
-    "placa_normalizada": "PAB1234",
-    "placa_original": "PAB1234",
-    "nombre": "TestUser",
-    "orden": [
-      {
-        "item": "Café Guatemalteco / Café de la Casa (16oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Chocolate Caliente (12oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Iced Americano (12oz)",
-        "quantity": 1
-      },
-      {
-        "item": "Panini atún",
-        "quantity": 1
-      },
-      {
-        "item": "Bundt Cake",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-30T13:08:53-06:00",
-    "suggestion_accepted": true
-  },
-  {
-    "placa_normalizada": "PAB1234",
-    "placa_original": "PAB1234",
-    "nombre": "TestUser",
-    "orden": [
-      {
-        "item": "Cheesecake",
-        "quantity": 1
-      },
-      {
-        "item": "Iced Americano (16oz)",
-        "quantity": 1
-      }
-    ],
-    "fecha_hora": "2026-04-30T13:10:48-06:00",
-    "suggestion_accepted": false
-  },
-  {
-    "placa_normalizada": "PAB1234",
-    "placa_original": "PAB1234",
-    "nombre": "TestUser",
-    "orden": [
-      {
-        "item": "Matcha Frío (12oz)",
-        "quantity": 3
-      }
-    ],
-    "fecha_hora": "2026-04-30T13:12:28-06:00",
+    "fecha_hora": "2026-05-03T15:12:16-06:00",
     "suggestion_accepted": false
   }
 ]

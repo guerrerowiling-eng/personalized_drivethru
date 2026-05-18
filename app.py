@@ -4,6 +4,9 @@ Sistema Drive-Thru para Cafeterías - Backend Flask.
 Escanea placas, identifica clientes recurrentes y muestra
 información personalizada al operador.
 """
+from dotenv import load_dotenv
+load_dotenv()
+
 import atexit
 import re
 import threading
@@ -257,7 +260,7 @@ def api_simulate_arrival():
                 _last_valid_plate = p
                 _last_valid_plate_monotonic = now
             _detection_failed_until = 0.0
-        elif config.get_effective_camera_mode() == "real":
+        elif config.get_effective_camera_mode() != "simulated":
             if _last_valid_plate and (now - _last_valid_plate_monotonic) <= 30.0:
                 _current_plate = _last_valid_plate
                 _detection_failed_until = 0.0

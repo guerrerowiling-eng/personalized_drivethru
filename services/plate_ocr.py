@@ -353,6 +353,14 @@ def _best_plate_and_confidence_from_readtext(
             continue
         filtered.append(item)
 
+    logging.warning(
+        "[OCR DEBUG] Confidence filter (>=%.2f) passed %d/%d items: %s",
+        min_confidence,
+        len(filtered),
+        len(results),
+        [(item[1], round(float(item[2]), 3)) for item in filtered if len(item) >= 3],
+    )
+
     for item in filtered:
         text, conf = item[1], float(item[2])
         raw = text or ""
@@ -364,6 +372,12 @@ def _best_plate_and_confidence_from_readtext(
             if _is_plate_shape(tok):
                 candidates.append((tok, conf))
 
+    logging.warning(
+        "[OCR DEBUG] Plate regex (^P[A-Z0-9]{6}$) matched %d candidate(s): %s",
+        len(candidates),
+        [(p, round(c, 3)) for p, c in candidates],
+    )
+
     if not candidates:
         combined = _normalize_plate_token("".join(item[1] for item in filtered if len(item) > 1))
         if _is_plate_shape(combined) and filtered:
@@ -372,6 +386,7 @@ def _best_plate_and_confidence_from_readtext(
                 candidates.append((combined, avg))
 
     if not candidates:
+        logging.warning("[OCR DEBUG] No plate-shaped candidates after regex; returning (None, 0.0)")
         return None, 0.0
 
     candidates.sort(
@@ -429,8 +444,14 @@ def _aggregate_frame_votes(votes_with_conf: list[tuple[str | None, float]]) -> s
     - Si alguna placa aparece 2+ veces, gana la de mayor frecuencia (empate → mayor suma de confianza).
     - Si ninguna llega a 2, se usa la detección individual con mayor confianza.
     """
+    logging.warning(
+        "[OCR DEBUG] Aggregating votes from %d frame(s): %s",
+        len(votes_with_conf),
+        [(p, round(c, 3)) for p, c in votes_with_conf],
+    )
     scored = [(p, c) for p, c in votes_with_conf if p]
     if not scored:
+        logging.warning("[OCR DEBUG] No non-None votes; aggregation returns None")
         return None
     counts = Counter(p for p, _ in scored)
     two_plus = [p for p, n in counts.items() if n >= 2]
@@ -439,8 +460,11 @@ def _aggregate_frame_votes(votes_with_conf: list[tuple[str | None, float]]) -> s
         def rank(p: str) -> tuple[int, float]:
             return counts[p], sum(c for pp, c in scored if pp == p)
 
-        return max(two_plus, key=rank)
-    return max(scored, key=lambda x: x[1])[0]
+        winner = max(two_plus, key=rank)
+    else:
+        winner = max(scored, key=lambda x: x[1])[0]
+    logging.warning("[OCR DEBUG] Vote winner: %s", winner)
+    return winner
 
 
 def _detect_plate_single_frame(reader, frame_bgr, hard_deadline: float) -> tuple[str | None, float]:
@@ -474,6 +498,12 @@ def _detect_plate_single_frame(reader, frame_bgr, hard_deadline: float) -> tuple
             merged.extend(reader.readtext(img, detail=1, paragraph=False))
         except Exception:
             continue
+
+    logging.warning(
+        "[OCR DEBUG] Single-frame raw OCR results (%d total): %s",
+        len(merged),
+        [(item[1], round(float(item[2]), 3)) for item in merged if len(item) >= 3],
+    )
 
     return (
         _best_plate_and_confidence_from_readtext(merged, _MIN_OCR_CONFIDENCE)
@@ -546,7 +576,9 @@ def read_plate_from_camera() -> str | None:
     Returns:
         str: Placa detectada o None si no se pudo leer.
     """
-    if config.get_effective_camera_mode() == "simulated":
+    mode = config.get_effective_camera_mode()
+    logging.warning("[OCR DEBUG] read_plate_from_camera invoked (mode=%s)", mode)
+    if mode == "simulated":
         return _simulate_plate_detection()
 
     t0 = time.monotonic()
@@ -560,12 +592,19 @@ def read_plate_from_camera() -> str | None:
         burst_end,
         hard_deadline,
     )
+    logging.warning(
+        "[OCR DEBUG] Burst captured %d frame(s) (target=%d)",
+        len(frames),
+        _BURST_FRAME_COUNT,
+    )
     if not frames:
+        logging.warning("[OCR DEBUG] No frames available from camera; returning None")
         return None
 
     try:
         reader = _get_easyocr_reader()
-    except Exception:
+    except Exception as exc:
+        logging.warning("[OCR DEBUG] EasyOCR reader failed to load: %r; returning None", exc)
         return None
 
     votes: list[tuple[str | None, float]] = []
@@ -577,6 +616,10 @@ def read_plate_from_camera() -> str | None:
         except Exception:
             votes.append((None, 0.0))
 
+    logging.warning(
+        "[OCR DEBUG] Per-frame detection results (plate, conf): %s",
+        [(p, round(c, 3)) for p, c in votes],
+    )
     return _aggregate_frame_votes(votes)
 
 

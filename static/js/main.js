@@ -13,8 +13,32 @@ let menuCategories = [];
 let filterText = "";
 /** @type {object | null} */
 let lastState = null;
+/** @type {"simulated" | "real" | "hikvision_rtsp"} */
+let currentCameraMode = "simulated";
 let appliedCameraMode = null;
 let nicknameModalOpen = false;
+
+const CAMERA_MODES = ["simulated", "real", "hikvision_rtsp"];
+const CAMERA_PREVIEW_MODES = new Set(["real", "hikvision_rtsp"]);
+const CAMERA_MODE_LABEL = {
+    simulated: "Modo: simulado",
+    real: "Modo: cámara PC",
+    hikvision_rtsp: "Modo: cámara Hikvision",
+};
+const CAMERA_PLACEHOLDER_LABEL = {
+    simulated: "Vista previa solo en modo cámara",
+    real: "Cargando cámara…",
+    hikvision_rtsp: "Cargando cámara Hikvision…",
+};
+const SIMULATE_BUTTON_LABEL = {
+    simulated: "Simular llegada",
+    real: "Detectar placa",
+    hikvision_rtsp: "Detectar placa",
+};
+
+function normalizeCameraMode(mode) {
+    return CAMERA_MODES.includes(mode) ? mode : "simulated";
+}
 
 /** Carrito: modo armado de pedido */
 let cartBuilding = false;
@@ -56,7 +80,8 @@ const elements = {
     cameraPreviewImg: document.getElementById("cameraPreviewImg"),
     cameraPreviewPlaceholder: document.getElementById("cameraPreviewPlaceholder"),
     cameraModeLabel: document.getElementById("cameraModeLabel"),
-    btnCameraToggle: document.getElementById("btnCameraToggle"),
+    cameraModeSeg: document.getElementById("cameraModeSeg"),
+    cameraModeButtons: document.querySelectorAll(".camera-mode-seg__btn"),
     btnEditNickname: document.getElementById("btnEditNickname"),
     nicknameModalBackdrop: document.getElementById("nicknameModalBackdrop"),
     nicknameModal: document.getElementById("nicknameModal"),
@@ -93,26 +118,35 @@ function startCameraPreview() {
     cameraPreviewTimer = setInterval(fetchOneCameraPreview, PREVIEW_INTERVAL_MS);
 }
 
+function updateCameraSegmentedSelection(mode) {
+    elements.cameraModeButtons.forEach((btn) => {
+        const isActive = btn.dataset.cameraMode === mode;
+        btn.classList.toggle("is-active", isActive);
+        btn.setAttribute("aria-checked", isActive ? "true" : "false");
+        btn.tabIndex = isActive ? 0 : -1;
+    });
+}
+
 function syncCameraUi(mode) {
-    const m = mode === "real" ? "real" : "simulated";
+    const m = normalizeCameraMode(mode);
+    currentCameraMode = m;
+    updateCameraSegmentedSelection(m);
+
     if (m === appliedCameraMode) return;
     appliedCameraMode = m;
 
-    if (m === "real") {
-        elements.cameraModeLabel.textContent = "Modo: cámara real";
-        elements.btnCameraToggle.textContent = "Usar simulación";
-        elements.btnSimulate.textContent = "Detectar placa";
+    elements.cameraModeLabel.textContent = CAMERA_MODE_LABEL[m];
+    elements.btnSimulate.textContent = SIMULATE_BUTTON_LABEL[m];
+
+    if (CAMERA_PREVIEW_MODES.has(m)) {
         startCameraPreview();
+        elements.cameraPreviewPlaceholder.textContent = CAMERA_PLACEHOLDER_LABEL[m];
     } else {
         stopCameraPreview();
-        elements.cameraModeLabel.textContent = "Modo: simulado";
-        elements.btnCameraToggle.textContent = "Usar cámara real";
-        elements.btnSimulate.textContent = "Simular llegada";
         elements.cameraPreviewImg.hidden = true;
         elements.cameraPreviewImg.removeAttribute("src");
         elements.cameraPreviewPlaceholder.hidden = false;
-        elements.cameraPreviewPlaceholder.textContent =
-            "Vista previa solo en modo cámara real";
+        elements.cameraPreviewPlaceholder.textContent = CAMERA_PLACEHOLDER_LABEL[m];
     }
 }
 
@@ -714,19 +748,21 @@ elements.plateInput.addEventListener("keydown", (e) => {
 
 elements.btnSimulate.addEventListener("click", simulateArrival);
 
-elements.btnCameraToggle.addEventListener("click", async () => {
-    const cur =
-        lastState && lastState.camera_mode ? lastState.camera_mode : "simulated";
-    const next = cur === "real" ? "simulated" : "real";
+async function requestCameraModeChange(nextMode) {
+    const target = normalizeCameraMode(nextMode);
+    if (target === currentCameraMode) return;
+    const previousMode = currentCameraMode;
+    updateCameraSegmentedSelection(target);
     try {
         const res = await fetch("/api/camera-mode", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ mode: next }),
+            body: JSON.stringify({ mode: target }),
         });
         const data = await res.json();
         if (!data.ok) {
             showError(data.error || "No se pudo cambiar el modo de cámara");
+            updateCameraSegmentedSelection(previousMode);
             return;
         }
         appliedCameraMode = null;
@@ -735,7 +771,15 @@ elements.btnCameraToggle.addEventListener("click", async () => {
     } catch (e) {
         console.error(e);
         showError("Error de red al cambiar modo de cámara");
+        updateCameraSegmentedSelection(previousMode);
     }
+}
+
+elements.cameraModeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const mode = btn.dataset.cameraMode || "simulated";
+        requestCameraModeChange(mode);
+    });
 });
 
 elements.cameraPreviewImg.addEventListener("load", () => {

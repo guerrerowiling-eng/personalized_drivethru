@@ -24,7 +24,32 @@
                 </div>
                 <div class="camera-panel-actions">
                     <p class="camera-mode-label" id="cameraModeLabel">Modo: simulado</p>
-                    <button type="button" class="btn btn-secondary" id="btnCameraToggle">Usar cámara real</button>
+                    <div class="camera-mode-seg" id="cameraModeSeg" role="radiogroup" aria-label="Modo de cámara">
+                        <button
+                            type="button"
+                            class="camera-mode-seg__btn is-active"
+                            id="btnCameraModeSimulated"
+                            data-camera-mode="simulated"
+                            role="radio"
+                            aria-checked="true"
+                        >Simulado</button>
+                        <button
+                            type="button"
+                            class="camera-mode-seg__btn"
+                            id="btnCameraModeReal"
+                            data-camera-mode="real"
+                            role="radio"
+                            aria-checked="false"
+                        >Cámara PC</button>
+                        <button
+                            type="button"
+                            class="camera-mode-seg__btn"
+                            id="btnCameraModeHikvision"
+                            data-camera-mode="hikvision_rtsp"
+                            role="radio"
+                            aria-checked="false"
+                        >Cámara Hikvision</button>
+                    </div>
                 </div>
             </div>
         </section>

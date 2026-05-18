@@ -127,6 +127,52 @@ body {
     color: var(--text-primary);
 }
 
+.camera-mode-seg {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 0.3rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.camera-mode-seg__btn {
+    flex: 1 1 auto;
+    min-width: 96px;
+    min-height: 44px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.camera-mode-seg__btn:hover,
+.camera-mode-seg__btn:focus-visible {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+    outline: none;
+}
+
+.camera-mode-seg__btn.is-active {
+    background: var(--accent);
+    color: var(--bg-dark);
+    border-color: var(--accent);
+}
+
+.camera-mode-seg__btn.is-active:hover,
+.camera-mode-seg__btn.is-active:focus-visible {
+    background: var(--accent);
+    color: var(--bg-dark);
+}
+
 /* Main display - Grande y legible desde lejos */
 .main {
     flex: 1;
@@ -685,6 +731,16 @@ body[data-view-state="returning"] .suggestion-actions .btn {
     .display-card {
         padding: 2rem 1.25rem;
         min-height: 220px;
+    }
+
+    .camera-mode-seg {
+        display: flex;
+        width: 100%;
+    }
+
+    .camera-mode-seg__btn {
+        flex: 1 1 0;
+        min-width: 0;
     }
 }
 

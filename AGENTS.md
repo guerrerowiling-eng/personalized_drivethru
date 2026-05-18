@@ -26,6 +26,8 @@ Owner: Will (solo founder, mechatronics engineer in Guatemala). Workflow: Will w
 
 **Frontend:** Server-rendered Jinja templates (`templates/operator.html`) · Vanilla JavaScript (`static/js/main.js`, no framework) · CSS (`static/css/style.css`, tablet-first, custom palette) · Polling-based UI updates every 2s via `GET /api/current` · State machine driven by `document.body.dataset.viewState` (`idle | new | returning | detection_failed | cart_building`).
 
+**Camera selector UI (frontend convention):** Camera mode is presented to the operator as a **three-option segmented control** (`Simulado` / `Cámara PC` / `Cámara Hikvision`), never as a boolean toggle. The frontend state variable is the string `currentCameraMode ∈ {"simulated", "real", "hikvision_rtsp"}`. Preview polling runs for `real` and `hikvision_rtsp`; it is off only for `simulated`.
+
 **Languages used in product:** UI is Spanish-only. Code comments are mixed Spanish/English. Don't translate UI strings to English.
 
 ---
@@ -125,6 +127,7 @@ Prototype_cursor/
 - **Spanish-only operator UI.** Do not introduce English strings into operator-facing copy.
 - **Cart starts empty when "Otro pedido" is clicked.** Pre-fill is a deferred future refinement, not a current behavior.
 - **30-second memory for last valid plate** in real OCR mode. Covers brief OCR failures. Don't shorten without discussion.
+- **Camera mode UI is a three-option selector, never a boolean toggle.** Domain is exactly `simulated | real | hikvision_rtsp`. Active button uses the existing `--accent` color via `.camera-mode-seg__btn.is-active`. The simulate-arrival button is always enabled in all three modes; only its label changes (`Simular llegada` ↔ `Detectar placa`).
 
 ### Phase 2 suggestion logic (current state)
 
@@ -204,4 +207,22 @@ If a task is ambiguous or the request conflicts with this file, **stop and ask W
 
 ---
 
-*Last updated: April 2026, end of Phase 2.*
+## When AGENTS.md itself must be updated
+
+After completing any task that changes any of the following, propose an
+AGENTS.md update as part of the deliverable summary:
+
+- A new API endpoint, or a changed endpoint contract
+- A new file or folder in the structure
+- A change to data contracts (CSV columns, JSON field names/shapes)
+- A new locked decision, or reversal of an existing one
+- A new "never do" rule learned from a mistake
+- A change to coding conventions or threading rules
+- A new module-level constant that other modules will read
+
+Output the proposed AGENTS.md diff in the deliverable summary. Do not
+edit AGENTS.md directly. I will review and approve the diff before it lands.
+
+---
+
+*Last updated: May 2026, three-mode camera UI (hikvision_rtsp) landed.*

@@ -79,13 +79,45 @@ http://localhost:5000
 | VWX234  | Sofía Herrera   |
 | YZA567  | Ricardo Torres  |
 
-## Conectar OCR real
+## Modos de cámara
 
-1. Edita `services/plate_ocr.py`
-2. Implementa `read_plate_from_camera()` con tu biblioteca (OpenCV, Tesseract, EasyOCR, etc.)
-3. Cambia `CAMERA_MODE=real` en `config.py` o con la variable de entorno:
+El backend soporta 3 modos de captura configurables con `CAMERA_MODE`:
+
+- `simulated`: placas falsas/aleatorias (sin cámara física).
+- `real`: webcam local con `cv2.VideoCapture(0)`.
+- `hikvision_rtsp`: cámara IP Hikvision por RTSP con grabber en hilo de fondo (latest-frame cache).
+
+Ejemplos en Windows:
+
+```bash
+set CAMERA_MODE=simulated
+python app.py
+```
 
 ```bash
 set CAMERA_MODE=real
 python app.py
 ```
+
+```bash
+set CAMERA_MODE=hikvision_rtsp
+python app.py
+```
+
+## Hikvision setup
+
+Variables de entorno disponibles (todas opcionales, con default):
+
+- `HIKVISION_IP=192.168.0.64`
+- `HIKVISION_USER=admin`
+- `HIKVISION_PASSWORD=` (vacío por defecto)
+- `HIKVISION_RTSP_PORT=554`
+- `HIKVISION_RTSP_PATH=/Streaming/Channels/102`
+
+Prueba de conectividad RTSP (sin levantar Flask):
+
+```bash
+python scripts/test_rtsp_connection.py
+```
+
+El script intenta leer 10 frames en ~3 segundos y guarda el último en `data/test_rtsp_frame.jpg`.

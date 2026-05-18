@@ -4,6 +4,7 @@ Sistema Drive-Thru para Cafeterías - Backend Flask.
 Escanea placas, identifica clientes recurrentes y muestra
 información personalizada al operador.
 """
+import atexit
 import re
 import threading
 import time
@@ -22,6 +23,8 @@ from services.plate_ocr import (
     get_cached_preview_jpeg,
     read_plate_from_camera,
     release_camera,
+    start_rtsp_grabber_loop,
+    stop_rtsp_grabber_loop,
     start_preview_capture_loop,
 )
 from services import visit_history
@@ -38,6 +41,12 @@ _last_valid_plate_monotonic: float = 0.0
 _detection_failed_until: float = 0.0
 
 _GT_PLATE_RE = re.compile(r"^P[A-Z0-9]{6}$")
+
+
+def _shutdown_camera_workers() -> None:
+    """Cierre limpio de recursos de cámara al salir del proceso."""
+    stop_rtsp_grabber_loop()
+    release_camera()
 
 
 def _is_valid_gt_plate(plate: str) -> bool:
@@ -154,7 +163,7 @@ def api_camera_mode_get():
 
 @app.route("/api/camera-mode", methods=["POST"])
 def api_camera_mode_post():
-    """Cambia simulado / real en caliente (no modifica variables de entorno)."""
+    """Cambia simulado / real / hikvision_rtsp en caliente."""
     global _detection_failed_until
     data = request.get_json() or {}
     mode = (data.get("mode") or "").strip().lower()
@@ -163,8 +172,15 @@ def api_camera_mode_post():
     except ValueError as e:
         return jsonify({"ok": False, "error": str(e)}), 400
     if mode == "simulated":
+        stop_rtsp_grabber_loop()
         release_camera()
     elif mode == "real":
+        stop_rtsp_grabber_loop()
+        release_camera()
+        start_preview_capture_loop()
+    elif mode == "hikvision_rtsp":
+        release_camera()
+        start_rtsp_grabber_loop()
         start_preview_capture_loop()
     with _plate_lock:
         _detection_failed_until = 0.0
@@ -399,10 +415,16 @@ def api_record_visit():
 
 
 def main():
-    if config.get_effective_camera_mode() == "simulated" and config.AUTO_SIMULATE_ARRIVALS:
+    atexit.register(_shutdown_camera_workers)
+    config.warn_if_hikvision_password_missing()
+
+    mode = config.get_effective_camera_mode()
+    if mode == "simulated" and config.AUTO_SIMULATE_ARRIVALS:
         t = threading.Thread(target=_camera_simulation_loop, daemon=True)
         t.start()
-    if config.get_effective_camera_mode() == "real":
+    if mode == "hikvision_rtsp":
+        start_rtsp_grabber_loop()
+    if mode in ("real", "hikvision_rtsp"):
         start_preview_capture_loop()
 
     app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=False)

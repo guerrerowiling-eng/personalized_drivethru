@@ -6,6 +6,7 @@ Servicio de lectura de placas por OCR.
   (ráfaga multi-frame, preprocesado CLAHE + bilateral, ROI por contornos).
 """
 import csv
+import logging
 import random
 import re
 import string
@@ -21,6 +22,13 @@ import config
 
 _cap: object | None = None
 _cap_lock = threading.Lock()
+_rtsp_cap: object | None = None
+_rtsp_cap_lock = threading.Lock()
+_rtsp_thread: threading.Thread | None = None
+_rtsp_thread_lock = threading.Lock()
+_rtsp_latest_frame = None
+_rtsp_frame_lock = threading.Lock()
+_rtsp_stop_event = threading.Event()
 _reader = None
 _reader_lock = threading.Lock()
 _preview_jpeg_cache: bytes | None = None
@@ -45,6 +53,10 @@ _OCR_MAX_FRAME_WIDTH = 720
 _MAX_PLATE_ROIS = 5
 _PLATE_ASPECT_MIN = 1.8
 _PLATE_ASPECT_MAX = 4.0
+_RTSP_MAX_CONSECUTIVE_FAILURES = 10
+_RTSP_RECONNECT_DELAY_SEC = 2.0
+_RTSP_GRAB_LOOP_SLEEP_SEC = 0.005
+_RTSP_THREAD_JOIN_TIMEOUT_SEC = 3.0
 
 
 def _generate_random_plate() -> str:
@@ -83,7 +95,7 @@ def _preview_capture_loop() -> None:
     """Captura frames en segundo plano para vista previa fluida."""
     global _preview_jpeg_cache
     while True:
-        if config.get_effective_camera_mode() != "real":
+        if config.get_effective_camera_mode() not in ("real", "hikvision_rtsp"):
             with _preview_cache_lock:
                 _preview_jpeg_cache = None
             time.sleep(0.18)
@@ -124,6 +136,107 @@ def _get_easyocr_reader():
         if _reader is None:
             _reader = easyocr.Reader(["en", "es"], gpu=False, verbose=False)
         return _reader
+
+
+def _release_rtsp_capture() -> None:
+    """Libera el VideoCapture RTSP compartido."""
+    global _rtsp_cap
+    with _rtsp_cap_lock:
+        if _rtsp_cap is not None:
+            try:
+                _rtsp_cap.release()
+            except Exception as exc:
+                logging.debug("Error liberando RTSP capture: %s", exc)
+            _rtsp_cap = None
+
+
+def _open_rtsp_capture():
+    import cv2
+
+    url = config.build_hikvision_rtsp_url()
+    cap = cv2.VideoCapture(url)
+    if not cap or not cap.isOpened():
+        if cap is not None:
+            cap.release()
+        return None
+    return cap
+
+
+def _rtsp_grabber_loop() -> None:
+    global _rtsp_cap, _rtsp_latest_frame
+
+    reconnect_attempt = 0
+    consecutive_failures = 0
+
+    while not _rtsp_stop_event.is_set():
+        with _rtsp_cap_lock:
+            cap = _rtsp_cap
+
+        if cap is None or not cap.isOpened():
+            reconnect_attempt += 1
+            ts = time.strftime("%Y-%m-%d %H:%M:%S")
+            logging.warning("[%s] Reintentando conexión RTSP #%d", ts, reconnect_attempt)
+            opened = _open_rtsp_capture()
+            with _rtsp_cap_lock:
+                _rtsp_cap = opened
+                cap = _rtsp_cap
+            consecutive_failures = 0
+            if cap is None:
+                _rtsp_stop_event.wait(_RTSP_RECONNECT_DELAY_SEC)
+                continue
+
+        ok, frame = cap.read()
+        if ok and frame is not None:
+            consecutive_failures = 0
+            with _rtsp_frame_lock:
+                _rtsp_latest_frame = frame
+            _rtsp_stop_event.wait(_RTSP_GRAB_LOOP_SLEEP_SEC)
+            continue
+
+        consecutive_failures += 1
+        if consecutive_failures >= _RTSP_MAX_CONSECUTIVE_FAILURES:
+            ts = time.strftime("%Y-%m-%d %H:%M:%S")
+            logging.warning(
+                "[%s] Fallaron %d lecturas RTSP consecutivas; reconectando...",
+                ts,
+                consecutive_failures,
+            )
+            _release_rtsp_capture()
+            consecutive_failures = 0
+            _rtsp_stop_event.wait(_RTSP_RECONNECT_DELAY_SEC)
+            continue
+
+        _rtsp_stop_event.wait(_RTSP_GRAB_LOOP_SLEEP_SEC)
+
+    _release_rtsp_capture()
+    with _rtsp_frame_lock:
+        _rtsp_latest_frame = None
+
+
+def start_rtsp_grabber_loop() -> None:
+    """Arranca hilo daemon que mantiene el frame RTSP más reciente."""
+    global _rtsp_thread
+    with _rtsp_thread_lock:
+        if _rtsp_thread is not None and _rtsp_thread.is_alive():
+            return
+        _rtsp_stop_event.clear()
+        _rtsp_thread = threading.Thread(target=_rtsp_grabber_loop, daemon=True)
+        _rtsp_thread.start()
+
+
+def stop_rtsp_grabber_loop() -> None:
+    """Detiene hilo RTSP y libera recursos compartidos."""
+    global _rtsp_thread, _rtsp_latest_frame
+    _rtsp_stop_event.set()
+    with _rtsp_thread_lock:
+        thread = _rtsp_thread
+    if thread is not None and thread.is_alive():
+        thread.join(timeout=_RTSP_THREAD_JOIN_TIMEOUT_SEC)
+    with _rtsp_thread_lock:
+        _rtsp_thread = None
+    _release_rtsp_capture()
+    with _rtsp_frame_lock:
+        _rtsp_latest_frame = None
 
 
 def _normalize_plate_token(text: str) -> str:
@@ -371,7 +484,15 @@ def _detect_plate_single_frame(reader, frame_bgr, hard_deadline: float) -> tuple
 
 def read_frame_bgr():
     """Lee un frame BGR o None."""
-    if config.get_effective_camera_mode() != "real":
+    mode = config.get_effective_camera_mode()
+    if mode == "simulated":
+        return None
+    if mode == "hikvision_rtsp":
+        with _rtsp_frame_lock:
+            if _rtsp_latest_frame is None:
+                return None
+            return _rtsp_latest_frame.copy()
+    if mode != "real":
         return None
     import cv2
 
@@ -405,7 +526,7 @@ def get_cached_preview_jpeg() -> tuple[bool, bytes | None, str | None]:
     JPEG de preview desde caché en memoria.
     Returns: (ok, jpeg_bytes_or_none, error_message_or_none)
     """
-    if config.get_effective_camera_mode() != "real":
+    if config.get_effective_camera_mode() not in ("real", "hikvision_rtsp"):
         return False, None, "Modo simulado — sin vista previa de cámara"
 
     with _preview_cache_lock:
